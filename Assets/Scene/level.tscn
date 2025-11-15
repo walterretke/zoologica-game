@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://6e0j7lgwrioe"]
+
+[ext_resource type="Script" uid="uid://ch8xnlwnu6n27" path="res://Assets/Scripts/level.gd" id="1_s535a"]
+[ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="2_font"]
+[ext_resource type="Theme" uid="uid://cwjaoo03ur0mh" path="res://Assets/Botoes/default_btn.tres" id="3_theme"]
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("_hud", "_shop_button", "_player")]
+script = ExtResource("1_s535a")
+_hud = NodePath("HUD")
+_shop_button = NodePath("HUD/ShopButton")
+_player = NodePath("CharacterBody2D2")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ShopButton" type="Button" parent="HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -80.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_theme")
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 32
+text = "Loja"

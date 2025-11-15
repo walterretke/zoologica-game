@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cwjaoo03ur0mh"]
+
+[ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="1_y8ix3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnjak"]
+bg_color = Color(0.8776157, 0.8776158, 0.8776157, 0.08235294)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3uty4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qc02"]
+bg_color = Color(0.8474744, 0.84747446, 0.84747446, 0.29803923)
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+shadow_color = Color(0, 0, 0, 0)
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_y8ix3")
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxFlat_bnjak")
+Button/styles/normal = SubResource("StyleBoxFlat_3uty4")
+Button/styles/pressed = SubResource("StyleBoxFlat_3qc02")

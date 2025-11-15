@@ -1,0 +1,133 @@
+[gd_scene load_steps=4 format=3 uid="uid://shop_animal_item_001"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/shop_animal_item.gd" id="1_shop_item"]
+[ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="2_font"]
+[ext_resource type="Theme" uid="uid://cwjaoo03ur0mh" path="res://Assets/Botoes/default_btn.tres" id="3_theme"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.55, 0.45, 0.35, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3, 0.25, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.2, 0.7, 0.2, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.1, 0.5, 0.1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.3, 0.85, 0.3, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.15, 0.6, 0.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_disabled"]
+bg_color = Color(0.4, 0.35, 0.3, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3, 0.25, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_name"]
+font = ExtResource("2_font")
+font_size = 36
+font_color = Color(1, 0.95, 0.8, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_price"]
+font = ExtResource("2_font")
+font_size = 32
+font_color = Color(1, 0.9, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_space"]
+font = ExtResource("2_font")
+font_size = 24
+font_color = Color(0.3, 1, 0.3, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="ShopAnimalItem" type="Panel" node_paths=PackedStringArray("_name_label", "_price_label", "_cage_select", "_buy_button", "_space_label")]
+custom_minimum_size = Vector2(1500, 200)
+layout_mode = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+script = ExtResource("1_shop_item")
+_name_label = NodePath("HBoxContainer/InfoContainer/NameLabel")
+_price_label = NodePath("HBoxContainer/InfoContainer/PriceLabel")
+_cage_select = NodePath("HBoxContainer/InfoContainer/CageSelectContainer/CageSelect")
+_buy_button = NodePath("HBoxContainer/BuyButton")
+_space_label = NodePath("HBoxContainer/InfoContainer/CageSelectContainer/SpaceLabel")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = -20.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfoContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/InfoContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_name")
+text = "Nome do Animal"
+horizontal_alignment = 0
+vertical_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="HBoxContainer/InfoContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_price")
+text = "100 MOEDAS"
+horizontal_alignment = 0
+vertical_alignment = 1
+
+[node name="CageSelectContainer" type="HBoxContainer" parent="HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="CageSelect" type="OptionButton" parent="HBoxContainer/InfoContainer/CageSelectContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+
+[node name="SpaceLabel" type="Label" parent="HBoxContainer/InfoContainer/CageSelectContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_space")
+text = "Espaço: 0/10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BuyButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 0)
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.9, 1)
+theme_override_colors/font_disabled_color = Color(0.7, 0.7, 0.7, 1)
+text = "COMPRAR"
+

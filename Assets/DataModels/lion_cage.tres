@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CageType" load_steps=4 format=3 uid="uid://bsdj8vch5rlla"]
+
+[ext_resource type="Script" uid="uid://clifdba6nilqb" path="res://Assets/DataModels/animal_template.gd" id="1_pyjvh"]
+[ext_resource type="Resource" uid="uid://bnricfj4ko6jl" path="res://Assets/DataModels/lion.tres" id="2_afq3d"]
+[ext_resource type="Script" uid="uid://bv0806ko48ahy" path="res://Assets/DataModels/cage_type.gd" id="2_l5iwh"]
+
+[resource]
+script = ExtResource("2_l5iwh")
+nome_exibicao = "Jaula do Leao"
+animal_templates_aceitos = Array[ExtResource("1_pyjvh")]([ExtResource("2_afq3d")])
+difficulty_level = 2
+description = "A jaula do Rei da Floresta!"
+metadata/_custom_type_script = "uid://bv0806ko48ahy"

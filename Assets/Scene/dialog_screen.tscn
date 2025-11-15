@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://v8yn2bfwu1et"]
+
+[ext_resource type="Script" uid="uid://j86md0hka3me" path="res://Assets/Scripts/dialog_screen.gd" id="1_y1cjy"]
+[ext_resource type="Texture2D" uid="uid://unnof5m3adkw" path="res://Assets/Sprites/imagens_dialogo/0.0.1 - Imagem Tela Dialogo Perosnagem Principal 2.png" id="2_32udp"]
+[ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="2_y1cjy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_32udp"]
+line_spacing = 0.0
+font = ExtResource("2_y1cjy")
+shadow_color = Color(0, 0, 0, 0.6)
+
+[node name="DialogScreen" type="Control" node_paths=PackedStringArray("_name", "_dialog", "_faceset")]
+custom_minimum_size = Vector2(900, 200)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_y1cjy")
+_name = NodePath("BackGround/HContainer/VBoxContainer/Name")
+_dialog = NodePath("BackGround/HContainer/VBoxContainer/Dialog")
+_faceset = NodePath("BackGround/HContainer/Border/Faceset")
+
+[node name="BackGround" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="HContainer" type="HBoxContainer" parent="BackGround"]
+custom_minimum_size = Vector2(890, 190)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 895.0
+offset_bottom = 195.0
+
+[node name="Border" type="ColorRect" parent="BackGround/HContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+
+[node name="Faceset" type="TextureRect" parent="BackGround/HContainer/Border"]
+custom_minimum_size = Vector2(192, 190)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -95.0
+offset_right = 96.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_32udp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackGround/HContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="BackGround/HContainer/VBoxContainer"]
+layout_mode = 2
+text = "Joseph"
+label_settings = SubResource("LabelSettings_32udp")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Dialog" type="RichTextLabel" parent="BackGround/HContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/normal_font = ExtResource("2_y1cjy")
+text = "Ola meu querido Amigo"

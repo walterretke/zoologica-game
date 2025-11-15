@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CageType" load_steps=3 format=3 uid="uid://dcs54lqifpqgc"]
+
+[ext_resource type="Script" uid="uid://clifdba6nilqb" path="res://Assets/DataModels/animal_template.gd" id="1_1j1e8"]
+[ext_resource type="Script" uid="uid://bv0806ko48ahy" path="res://Assets/DataModels/cage_type.gd" id="2_dka6o"]
+
+[resource]
+script = ExtResource("2_dka6o")
+nome_exibicao = "Jaula da Zebra"
+base_price = 4000
+difficulty_level = 5
+description = "Complicou..."
+metadata/_custom_type_script = "uid://bv0806ko48ahy"

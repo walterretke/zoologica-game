@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AnimalTemplate" load_steps=2 format=3 uid="uid://bnricfj4ko6jl"]
+
+[ext_resource type="Script" uid="uid://clifdba6nilqb" path="res://Assets/DataModels/animal_template.gd" id="1_lyxxv"]
+
+[resource]
+script = ExtResource("1_lyxxv")
+id_nome = "lion"
+base_price = 80
+metadata/_custom_type_script = "uid://clifdba6nilqb"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AnimalTemplate" load_steps=2 format=3 uid="uid://dqul22w8fdu10"]
+
+[ext_resource type="Script" uid="uid://clifdba6nilqb" path="res://Assets/DataModels/animal_template.gd" id="1_t3ste"]
+
+[resource]
+script = ExtResource("1_t3ste")
+id_nome = "zebra"
+nome_exibicao = "Zebra"
+base_price = 200
+metadata/_custom_type_script = "uid://clifdba6nilqb"
