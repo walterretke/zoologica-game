@@ -1,6 +1,7 @@
 extends Node2D
 
 const _SHOP_SCREEN:PackedScene = preload("res://Assets/Scene/shop_screen.tscn")
+const _PAUSE_MENU:PackedScene = preload("res://Assets/Scene/pause_menu.tscn")
 
 @export_category("Objects")
 @export var _hud: CanvasLayer = null
@@ -12,6 +13,16 @@ func _ready() -> void:
 	_initialize_shop_button()
 	_initialize_player()
 	_initialize_moedas_display()
+	# Salvar que o jogo foi iniciado quando entrar na cena
+	SaveManager.save_game_started()
+	# Garantir que o input está sendo processado
+	set_process_input(true)
+	set_process_unhandled_input(true)
+	print("Game.gd inicializado - Input habilitado")
+	if not _hud:
+		push_error("HUD não encontrado no game.gd!")
+	else:
+		print("HUD encontrado: ", _hud.name)
 
 func _initialize_shop_button() -> void:
 	if _shop_button:
@@ -49,10 +60,27 @@ func _initialize_moedas_display() -> void:
 		_update_moedas_display()
 
 func _input(event: InputEvent) -> void:
-	# Abrir loja com a tecla L
+	# Abrir menu de pausa com ESC (apenas se não estiver pausado)
+	if event.is_action_pressed("ui_cancel") or (event is InputEventKey and event.keycode == KEY_ESCAPE and event.pressed):
+		print("ESC pressionado no game.gd - pausado: ", get_tree().paused)
+		if not get_tree().paused:
+			_open_pause_menu()
+		get_viewport().set_input_as_handled()
+		return
+	
+	# Abrir loja com a tecla L (apenas se não estiver pausado)
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_L:
+		if event.keycode == KEY_L and not get_tree().paused:
 			_open_shop()
+			get_viewport().set_input_as_handled()
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Garantir que ESC funciona mesmo se outros nós não processarem
+	if event.is_action_pressed("ui_cancel") or (event is InputEventKey and event.keycode == KEY_ESCAPE and event.pressed):
+		print("ESC pressionado no _unhandled_input - pausado: ", get_tree().paused)
+		if not get_tree().paused:
+			_open_pause_menu()
+		get_viewport().set_input_as_handled()
 
 func _update_moedas_display() -> void:
 	if _moedas_label and _player:
@@ -84,4 +112,28 @@ func _open_shop() -> void:
 	shop_screen.set_player(_player)
 	_hud.add_child(shop_screen)
 	print("Loja aberta com sucesso!")
+
+func _open_pause_menu() -> void:
+	if not _hud:
+		push_error("HUD não encontrado! Não é possível abrir o menu de pausa.")
+		return
+	
+	# Verificar se o menu de pausa já está aberto
+	for child in _hud.get_children():
+		if child is PauseMenu:
+			return  # Menu de pausa já está aberto
+	
+	# Verificar se a loja está aberta (não abrir pausa se a loja estiver aberta)
+	for child in _hud.get_children():
+		if child is ShopScreen:
+			return  # Loja está aberta, não abrir pausa
+	
+	# Criar e adicionar o menu de pausa
+	var pause_menu = _PAUSE_MENU.instantiate()
+	if not pause_menu:
+		push_error("Falha ao instanciar o menu de pausa!")
+		return
+	
+	_hud.add_child(pause_menu)
+	print("Menu de pausa aberto!")
 
