@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceub5liek1u22"
-path="res://.godot/imported/4 - Jaula 16.png-cdf1352a2bbae70edc8c93f5e83c57d5.ctex"
+uid="uid://bvb8fmim3ntbx"
+path="res://.godot/imported/zebra_base-2.png.png-57571b87f167f45d9962f63c83d8f747.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Mapa/4 - Jaula 16.png"
-dest_files=["res://.godot/imported/4 - Jaula 16.png-cdf1352a2bbae70edc8c93f5e83c57d5.ctex"]
+source_file="res://Assets/Sprites/Animais/Zebra/zebra_base-2.png.png"
+dest_files=["res://.godot/imported/zebra_base-2.png.png-57571b87f167f45d9962f63c83d8f747.ctex"]
 
 [params]
 

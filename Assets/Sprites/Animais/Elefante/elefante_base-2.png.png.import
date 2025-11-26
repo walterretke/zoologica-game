@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxja5gm1qxh5l"
-path="res://.godot/imported/1 - Jaula 01-04 - Copia.png-6f187efe22b35d36dcd5a02deed80aef.ctex"
+uid="uid://iip2bv2p7mp7"
+path="res://.godot/imported/elefante_base-2.png.png-bccb48df932613e83833e6b0733d9eaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Mapa/1 - Jaula 01-04 - Copia.png"
-dest_files=["res://.godot/imported/1 - Jaula 01-04 - Copia.png-6f187efe22b35d36dcd5a02deed80aef.ctex"]
+source_file="res://Assets/Sprites/Animais/Elefante/elefante_base-2.png.png"
+dest_files=["res://.godot/imported/elefante_base-2.png.png-bccb48df932613e83833e6b0733d9eaa.ctex"]
 
 [params]
 

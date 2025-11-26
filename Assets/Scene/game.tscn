@@ -1,32 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://cy3v4r672fdt5"]
+[gd_scene load_steps=9 format=3 uid="uid://cy3v4r672fdt5"]
 
-[ext_resource type="Texture2D" path="res://Assets/Sprites/Assests_Jogo/Chão/Grama1.png" id="1_grama"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/Assests_Jogo/Chão/Chão2.png" id="1_chao"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/Assests_Jogo/Chão/Grama3.png" id="1_grama3"]
-[ext_resource type="Texture2D" uid="uid://bxja5gm1qxh5l" path="res://Assets/Mapa/1 - Jaula 01-04 - Copia.png" id="2_q485k"]
-[ext_resource type="Texture2D" uid="uid://bw2p0opmxhg2n" path="res://Assets/Mapa/1 - Jaula 05.png" id="4_bvub4"]
-[ext_resource type="Texture2D" uid="uid://cnhsgfrlsjpr8" path="res://Assets/Mapa/2 - Jaula 06 - Zebra.png" id="5_yjsfy"]
-[ext_resource type="Texture2D" uid="uid://ccprahm6v43l4" path="res://Assets/Mapa/2 - Jaula 07-09.png" id="6_bvub4"]
-[ext_resource type="Texture2D" uid="uid://bjjkpu140uohn" path="res://Assets/Mapa/2 - Jaula 10.png" id="6_l577d"]
-[ext_resource type="Texture2D" uid="uid://c5h48l5fb0vx1" path="res://Assets/Mapa/3 - Jaula 11.png" id="7_fsb1f"]
-[ext_resource type="Texture2D" uid="uid://blos6e0aishqp" path="res://Assets/Sprites/Assests_Jogo/Jogo/3 - Jaula 12-14.png" id="7_l577d"]
-[ext_resource type="Texture2D" uid="uid://dgf1sljcjwe7w" path="res://Assets/Mapa/3 - Jaula 15.png" id="9_7is7m"]
+[ext_resource type="Texture2D" uid="uid://bxja5gm1qxh5l" path="res://Assets/Mapa/jaula_layout.png" id="2_q485k"]
 [ext_resource type="PackedScene" uid="uid://uu4owmm80x58" path="res://Assets/Scene/Player.tscn" id="9_i4a30"]
-[ext_resource type="Texture2D" uid="uid://ceub5liek1u22" path="res://Assets/Mapa/4 - Jaula 16.png" id="10_6a3i2"]
-[ext_resource type="Texture2D" uid="uid://bvpif0nuv5pux" path="res://Assets/Mapa/4 - Jaula 17-19.png" id="11_1iqjq"]
-[ext_resource type="Texture2D" uid="uid://ye4u6k3bqxru" path="res://Assets/Sprites/Assests_Jogo/Jogo/5 - Jaula 21.png" id="12_fsb1f"]
-[ext_resource type="Texture2D" uid="uid://tsk7yflmveuw" path="res://Assets/Mapa/4 - Jaula 20.png" id="12_pki57"]
-[ext_resource type="Texture2D" uid="uid://dywke3ev7l1p3" path="res://Assets/Sprites/Assests_Jogo/Jogo/5 - Jaula 22-24.png" id="13_g1yw2"]
-[ext_resource type="Texture2D" uid="uid://urj1trano4yx" path="res://Assets/Mapa/5 - Jaula 25.png" id="15_l4b1a"]
-[ext_resource type="Texture2D" uid="uid://bp71b8jf7usc1" path="res://Assets/Mapa/6 - Jaula 26.png" id="16_b2csh"]
-[ext_resource type="Texture2D" uid="uid://bdvvejkyvkfxk" path="res://Assets/Mapa/6 - Jaula 27-....png" id="17_rcrgo"]
 [ext_resource type="Texture2D" uid="uid://biwbqaakal53k" path="res://Assets/Sprites/Assests_Jogo/Mapa/Placa Grande.png" id="18_fsb1f"]
 [ext_resource type="Script" uid="uid://3i73yfxkb2x8" path="res://Assets/Scripts/game.gd" id="20_game"]
 [ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="21_font"]
 [ext_resource type="Theme" uid="uid://cwjaoo03ur0mh" path="res://Assets/Botoes/default_btn.tres" id="22_theme"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i6p2"]
-size = Vector2(6800, 52)
+size = Vector2(10230, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_barreira"]
 size = Vector2(50, 2000)
@@ -38,25 +20,16 @@ _shop_button = NodePath("HUD/ShopButton")
 _player = NodePath("CharacterBody2D2")
 _moedas_label = NodePath("HUD/MoedasHUD/MoedasLabel")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="chao" type="StaticBody2D" parent="."]
 position = Vector2(0, 937)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(3400, 16)
+[node name="chao" type="CollisionShape2D" parent="chao"]
+position = Vector2(4578.277, 16)
 shape = SubResource("RectangleShape2D_7i6p2")
 debug_color = Color(0.964611, 0, 0.4946028, 0.41960785)
 
-[node name="BarreiraDireita" type="StaticBody2D" parent="."]
-collision_layer = 768
-position = Vector2(6800, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BarreiraDireita"]
-position = Vector2(25, 1000)
-shape = SubResource("RectangleShape2D_barreira")
-
 [node name="BarreiraEsquerda" type="StaticBody2D" parent="."]
 collision_layer = 768
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarreiraEsquerda"]
 position = Vector2(25, 1000)
@@ -66,59 +39,54 @@ shape = SubResource("RectangleShape2D_barreira")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="BiomaElefante" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-z_index = -1
-position = Vector2(747, 700)
-scale = Vector2(15, 15)
-texture = ExtResource("1_grama")
-
-[node name="1Jaula0104Copia" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(747, 521)
+[node name="Jaula Elefante" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(967, 533)
+scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
-[node name="BiomaLeao" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-z_index = -1
-position = Vector2(2191, 700)
-scale = Vector2(15, 15)
-texture = ExtResource("1_chao")
+[node name="PlacaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Elefante"]
+position = Vector2(250.24542, 249.25)
+scale = Vector2(1.4923377, 2.570312)
+texture = ExtResource("18_fsb1f")
 
-[node name="1Jaula0104Copia2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(2191, 521)
+[node name="Jaula Leao" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(2887, 533)
+scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
-[node name="BiomaMacaco" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-z_index = -1
-position = Vector2(3668, 700)
-scale = Vector2(15, 15)
-texture = ExtResource("1_grama3")
+[node name="PlacaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Leao"]
+position = Vector2(250.24542, 249.25)
+scale = Vector2(1.4923377, 2.570312)
+texture = ExtResource("18_fsb1f")
 
-[node name="1Jaula0104Copia3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(3668, 522)
+[node name="Jaula Macaco" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(4804, 533)
+scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
-[node name="BiomaGirafa" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-z_index = -1
-position = Vector2(4915, 700)
-scale = Vector2(15, 15)
-texture = ExtResource("1_grama")
+[node name="PlacaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Macaco"]
+position = Vector2(250.24542, 249.25)
+scale = Vector2(1.4923377, 2.570312)
+texture = ExtResource("18_fsb1f")
 
-[node name="1Jaula0104Copia4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(4915, 523)
+[node name="Jaula Girafa" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(6723.9995, 533)
+scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
-[node name="BiomaZebra" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-z_index = -1
-position = Vector2(6282, 700)
-scale = Vector2(15, 15)
-texture = ExtResource("1_grama3")
+[node name="PlacaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Girafa"]
+position = Vector2(250.24542, 249.25)
+scale = Vector2(1.4923377, 2.570312)
+texture = ExtResource("18_fsb1f")
 
-[node name="1Jaula05" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(6282, 523)
-texture = ExtResource("4_bvub4")
+[node name="Jaula Zebra" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(8644, 533)
+scale = Vector2(1.2757475, 1)
+texture = ExtResource("2_q485k")
 
-[node name="PlacaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(1286.25, 782.25)
-scale = Vector2(1.9038461, 2.570312)
+[node name="PlacaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Zebra"]
+position = Vector2(250.24542, 249.25)
+scale = Vector2(1.4923377, 2.570312)
 texture = ExtResource("18_fsb1f")
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("9_i4a30")]
@@ -171,3 +139,11 @@ theme_override_colors/font_hover_color = Color(1, 1, 0.9, 1)
 theme_override_fonts/font = ExtResource("21_font")
 theme_override_font_sizes/font_size = 42
 text = "🏪 LOJA"
+
+[node name="Barreira Direita" type="StaticBody2D" parent="."]
+position = Vector2(9550, 0)
+collision_layer = 768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barreira Direita"]
+position = Vector2(25, 1000)
+shape = SubResource("RectangleShape2D_barreira")

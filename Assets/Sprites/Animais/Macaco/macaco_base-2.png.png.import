@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgf1sljcjwe7w"
-path="res://.godot/imported/3 - Jaula 15.png-2a9e80e7cc13434d62718b9206fcd027.ctex"
+uid="uid://dss4lwxr76pg1"
+path="res://.godot/imported/macaco_base-2.png.png-0945451e92a15f5ee704b99982779a52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Mapa/3 - Jaula 15.png"
-dest_files=["res://.godot/imported/3 - Jaula 15.png-2a9e80e7cc13434d62718b9206fcd027.ctex"]
+source_file="res://Assets/Sprites/Animais/Macaco/macaco_base-2.png.png"
+dest_files=["res://.godot/imported/macaco_base-2.png.png-0945451e92a15f5ee704b99982779a52.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blygjcs1jwe8f"
-path="res://.godot/imported/5 - Jaula 21.png-b9d0e10dd6d3e25d2d7cfd884779cdd1.ctex"
+uid="uid://bojgcrtg7tcnn"
+path="res://.godot/imported/leao_base.png-78dc6d19cebe2946cf2e34ecec537638.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Mapa/5 - Jaula 21.png"
-dest_files=["res://.godot/imported/5 - Jaula 21.png-b9d0e10dd6d3e25d2d7cfd884779cdd1.ctex"]
+source_file="res://Assets/Sprites/Animais/Leao/leao_base.png"
+dest_files=["res://.godot/imported/leao_base.png-78dc6d19cebe2946cf2e34ecec537638.ctex"]
 
 [params]
 

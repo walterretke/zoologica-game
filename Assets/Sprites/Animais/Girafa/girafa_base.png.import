@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp71b8jf7usc1"
-path="res://.godot/imported/6 - Jaula 26.png-5c85a727cfa65324fd38727833cd60bb.ctex"
+uid="uid://n2xkv0ttxno8"
+path="res://.godot/imported/girafa_base.png-0acbf9bfefc04bf9a219293d3e478e74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Mapa/6 - Jaula 26.png"
-dest_files=["res://.godot/imported/6 - Jaula 26.png-5c85a727cfa65324fd38727833cd60bb.ctex"]
+source_file="res://Assets/Sprites/Animais/Girafa/girafa_base.png"
+dest_files=["res://.godot/imported/girafa_base.png-0acbf9bfefc04bf9a219293d3e478e74.ctex"]
 
 [params]
 

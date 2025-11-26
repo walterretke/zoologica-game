@@ -204,6 +204,18 @@ func _on_animal_purchased(animal_template: AnimalTemplate, target_cage: Cage) ->
 	if compra_sucesso:
 		print("Animal '%s' comprado com sucesso!" % animal_template.nome_exibicao)
 		# TODO: Adicionar feedback visual positivo
+		
+		# Notificar o game.gd para atualizar a visualização da jaula
+		var game_nodes = get_tree().get_nodes_in_group("game")
+		if game_nodes.size() > 0:
+			var game_node = game_nodes[0] as Node2D
+			if game_node and game_node.has_method("_on_animal_comprado"):
+				game_node._on_animal_comprado(target_cage)
+		else:
+			# Tentar encontrar o nó game de outra forma
+			var scene_root = get_tree().current_scene
+			if scene_root and scene_root.has_method("_on_animal_comprado"):
+				scene_root._on_animal_comprado(target_cage)
 	
 	# Atualizar a UI
 	_update_ui()
