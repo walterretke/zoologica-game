@@ -658,101 +658,33 @@ func _initialize_prompt_interacao() -> void:
 	print("Prompt de interação criado!")
 
 func _criar_areas_interacao() -> void:
-	# Mapeamento direto dos caminhos das placas no game.tscn para os tipos de desafio
-	# Baseado na estrutura: ParallaxBackground/ParallaxLayer/Jaula X/PlacaX
-	var placas_config = [
-		{
-			"jaula_path": "ParallaxBackground/ParallaxLayer/Jaula Elefante",
-			"placa_nome": "PlacaElefante",
-			"tipo_desafio": "elefante",
-			"nome": "Jaula do Elefante - Adição e Subtração"
-		},
-		{
-			"jaula_path": "ParallaxBackground/ParallaxLayer/Jaula Leao",
-			"placa_nome": "PlacaLeao",
-			"tipo_desafio": "leao",
-			"nome": "Jaula do Leão - Multiplicação"
-		},
-		{
-			"jaula_path": "ParallaxBackground/ParallaxLayer/Jaula Macaco",
-			"placa_nome": "PlacaMacaco",
-			"tipo_desafio": "macaco",
-			"nome": "Jaula do Macaco - Divisão"
-		},
-		{
-			"jaula_path": "ParallaxBackground/ParallaxLayer/Jaula Girafa",
-			"placa_nome": "PlacaGirafa",
-			"tipo_desafio": "girafa",
-			"nome": "Jaula da Girafa - Regra de Três Simples"
-		},
-		{
-			"jaula_path": "ParallaxBackground/ParallaxLayer/Jaula Zebra",
-			"placa_nome": "PlacaZebra",
-			"tipo_desafio": "zebra",
-			"nome": "Jaula da Zebra - Regra de Três Composta"
-		}
+	# Conectar as áreas de interação que já existem na cena
+	# As áreas estão em AreasInteracao (mesmo nível que o player, sem parallax)
+	var areas_paths = [
+		"AreasInteracao/AreaInteracaoElefante",
+		"AreasInteracao/AreaInteracaoLeao",
+		"AreasInteracao/AreaInteracaoMacaco",
+		"AreasInteracao/AreaInteracaoGirafa",
+		"AreasInteracao/AreaInteracaoZebra"
 	]
 	
-	# Obter o ParallaxLayer para adicionar as áreas
-	var parallax_layer = get_node_or_null("ParallaxBackground/ParallaxLayer")
-	if not parallax_layer:
-		push_error("ParallaxLayer não encontrado!")
-		return
+	print("=== Conectando áreas de interação existentes nas placas ===")
 	
-	print("=== Criando áreas de interação para placas ===")
+	for path in areas_paths:
+		var area = get_node_or_null(path) as PlacaInteracao
+		if area:
+			# Conectar sinais da área
+			if not area.jogador_entrou.is_connected(_on_jogador_entrou_placa):
+				area.jogador_entrou.connect(_on_jogador_entrou_placa.bind(area))
+			if not area.jogador_saiu.is_connected(_on_jogador_saiu_placa):
+				area.jogador_saiu.connect(_on_jogador_saiu_placa.bind(area))
+			if not area.desafio_solicitado.is_connected(_on_desafio_solicitado):
+				area.desafio_solicitado.connect(_on_desafio_solicitado.bind(area))
+			print("✓ Área conectada: %s (tipo: %s) em posição global: %s" % [area.nome_jaula, area.tipo_desafio, area.global_position])
+		else:
+			push_warning("✗ Área não encontrada: %s" % path)
 	
-	for config in placas_config:
-		# Buscar a jaula
-		var jaula_node = get_node_or_null(config.jaula_path)
-		if not jaula_node:
-			push_warning("✗ Jaula não encontrada: %s" % config.jaula_path)
-			continue
-		
-		# Buscar a placa dentro da jaula
-		var placa_node = jaula_node.get_node_or_null(config.placa_nome)
-		if not placa_node:
-			push_warning("✗ Placa '%s' não encontrada na jaula!" % config.placa_nome)
-			continue
-		
-		# Calcular posição real da placa no mundo
-		# Posição = Jaula.position + (Placa.position * Jaula.scale)
-		var jaula_pos = jaula_node.position
-		var jaula_scale = jaula_node.scale
-		var placa_pos_local = placa_node.position
-		
-		var pos_mundo = jaula_pos + Vector2(placa_pos_local.x * jaula_scale.x, placa_pos_local.y * jaula_scale.y)
-		
-		# Criar área e adicionar ao ParallaxLayer
-		var area = _criar_area_interacao(config.placa_nome, config, pos_mundo)
-		parallax_layer.add_child(area)
-		print("✓ Área criada para %s em posição: %s (jaula: %s, placa local: %s)" % [config.placa_nome, pos_mundo, jaula_pos, placa_pos_local])
-	
-	print("=== Áreas de interação criadas ===")
-
-func _criar_area_interacao(nome: String, config: Dictionary, pos_mundo: Vector2) -> PlacaInteracao:
-	var area = PlacaInteracao.new()
-	area.name = "AreaInteracao_" + nome
-	# Posição baseada na posição calculada da placa + offset para baixo (onde o jogador fica no chão)
-	area.position = pos_mundo + Vector2(0, 120)  # Offset para baixo da placa
-	area.tipo_desafio = config.tipo_desafio
-	area.nome_jaula = config.nome
-	
-	# Criar collision shape
-	var collision = CollisionShape2D.new()
-	collision.name = "CollisionShape2D"
-	
-	var shape = RectangleShape2D.new()
-	shape.size = Vector2(180, 200)  # Área para detectar o jogador
-	collision.shape = shape
-	
-	area.add_child(collision)
-	
-	# Conectar sinais
-	area.jogador_entrou.connect(_on_jogador_entrou_placa.bind(area))
-	area.jogador_saiu.connect(_on_jogador_saiu_placa.bind(area))
-	area.desafio_solicitado.connect(_on_desafio_solicitado.bind(area))
-	
-	return area
+	print("=== Áreas de interação conectadas ===")
 
 func _on_jogador_entrou_placa(placa: PlacaInteracao) -> void:
 	if _desafio_ativo:

@@ -138,7 +138,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 7.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -161,7 +161,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -205,8 +205,9 @@ texture_filter = 1
 position = Vector2(42.999996, 850.814)
 scale = Vector2(5.527284, 4.2616243)
 sprite_frames = SubResource("SpriteFrames_8plpa")
-animation = &"walk"
+animation = &"run"
 autoplay = "idle"
+frame_progress = 0.11802489
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(42.999996, 872.12213)
@@ -219,7 +220,7 @@ scale = Vector2(5.527284, 4.2616243)
 offset = Vector2(0, -15)
 limit_left = 0
 limit_top = 0
-limit_right = 21419
+limit_right = 9605
 limit_bottom = 1080
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0

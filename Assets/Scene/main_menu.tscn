@@ -1,0 +1,224 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw6mgldta3e6h"]
+
+[ext_resource type="Texture2D" uid="uid://mpuoov6u5oed" path="res://Assets/Mapa/TELA INICIAL.png" id="1_bg"]
+[ext_resource type="Script" uid="uid://d3pew582gl0yn" path="res://Assets/Scripts/main_menu.gd" id="2_script"]
+[ext_resource type="Theme" uid="uid://cwjaoo03ur0mh" path="res://Assets/Botoes/default_btn.tres" id="3_theme"]
+[ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="4_font"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ContainerIniciar" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = -12.0
+offset_right = 181.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnIniciar" type="Button" parent="ContainerIniciar"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme = ExtResource("3_theme")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 40
+text = "Iniciar Jogo"
+
+[node name="ContainerCreditos" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = 173.0
+offset_right = 163.0
+offset_bottom = 243.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnCreditos" type="Button" parent="ContainerCreditos"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme = ExtResource("3_theme")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 40
+text = "Créditos"
+
+[node name="ContainerSair" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = 366.0
+offset_right = 171.0
+offset_bottom = 436.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnSair" type="Button" parent="ContainerSair"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme = ExtResource("3_theme")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 40
+text = "Sair"
+
+[node name="CreditosPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CreditosPanel"]
+layout_mode = 2
+color = Color(0.05, 0.08, 0.05, 0.92)
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditosPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditosPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Titulo" type="Label" parent="CreditosPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.9, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 48
+text = "CRÉDITOS"
+horizontal_alignment = 1
+
+[node name="Subtitulo" type="Label" parent="CreditosPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 28
+text = "Desenvolvido por:"
+horizontal_alignment = 1
+
+[node name="Nomes" type="VBoxContainer" parent="CreditosPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Nome1" type="Label" parent="CreditosPanel/MarginContainer/VBoxContainer/Nomes"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 24
+text = "Igor Sebastian Mathias"
+horizontal_alignment = 1
+
+[node name="Nome2" type="Label" parent="CreditosPanel/MarginContainer/VBoxContainer/Nomes"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 24
+text = "Gabriel Lucios Sordi"
+horizontal_alignment = 1
+
+[node name="Nome3" type="Label" parent="CreditosPanel/MarginContainer/VBoxContainer/Nomes"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 24
+text = "Douglas Bohemer"
+horizontal_alignment = 1
+
+[node name="Nome4" type="Label" parent="CreditosPanel/MarginContainer/VBoxContainer/Nomes"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 24
+text = "Walter Retke"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="CreditosPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Agradecimento" type="Label" parent="CreditosPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.9, 0.7, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 20
+text = "Obrigado por jogar!"
+horizontal_alignment = 1
+
+[node name="Fechar" type="Label" parent="CreditosPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 16
+text = "Pressione ESC ou clique para voltar"
+horizontal_alignment = 1
+
+[node name="BtnFecharCreditos" type="Button" parent="CreditosPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 20
+text = "VOLTAR"
+
+[connection signal="pressed" from="CreditosPanel/BtnFecharCreditos" to="." method="_fechar_creditos"]

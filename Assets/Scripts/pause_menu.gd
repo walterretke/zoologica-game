@@ -5,7 +5,7 @@ class_name PauseMenu
 @export var resume_button: Button = null
 @export var quit_button: Button = null
 
-const MENU_SCENE = "res://Tela_inicial.tscn"
+const MENU_SCENE = "res://Assets/Scene/main_menu.tscn"
 
 func _ready() -> void:
 	_find_buttons()

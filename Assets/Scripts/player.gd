@@ -49,7 +49,7 @@ var sprite: AnimatedSprite2D
 
 # Limites do mapa (ajustar conforme necessário)
 @export var limite_esquerda: float = 0.0
-@export var limite_direita: float = 6800.0
+@export var limite_direita: float = 9500.0  # Ajustado para acessar todas as jaulas até a Barreira Direita
 
 # =============================================================
 # 4. FUNÇÕES "BUILT-IN" (Onde a lógica acontece)
@@ -152,7 +152,35 @@ func _physics_process(delta):
 		global_position.y = 800  # Posição segura (ajuste conforme necessário)
 		velocity.y = 0
 	
+	# --- ANIMAÇÕES ---
+	_atualizar_animacao(direcao)
+	
 	# --- FIM DO CÓDIGO DELES ---
+
+# Função para atualizar a animação baseada no estado do jogador
+func _atualizar_animacao(direcao: float) -> void:
+	if not sprite:
+		return
+	
+	# Se não está no chão, usa animação de pulo
+	if not is_on_floor():
+		if sprite.animation != "jump":
+			sprite.play("jump")
+		return
+	
+	# Se está se movendo no chão
+	if direcao != 0:
+		# Usa "run" se estiver em alta velocidade, senão "walk"
+		if abs(velocity.x) > velocidade * 0.7:
+			if sprite.animation != "run":
+				sprite.play("run")
+		else:
+			if sprite.animation != "walk":
+				sprite.play("walk")
+	else:
+		# Parado - usa idle
+		if sprite.animation != "idle":
+			sprite.play("idle")
 
 # --- NOVAS FUNÇÕES DE "BACKEND" (para comprar coisas) ---
 

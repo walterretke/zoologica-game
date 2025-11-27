@@ -25,6 +25,8 @@ func _ready() -> void:
 	# Configurar monitoramento ativo
 	monitoring = true
 	monitorable = false
+	
+	print("PlacaInteracao '%s' inicializada em posição: %s" % [nome_jaula, global_position])
 
 func _on_body_entered(body: Node2D) -> void:
 	# Verificar se é o jogador (pode ser por grupo ou método)

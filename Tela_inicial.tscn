@@ -49,9 +49,9 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
-custom_minimum_size = Vector2(0, 200)
 
 [node name="start_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -66,12 +66,12 @@ theme_override_constants/separation = 92
 theme_override_styles/separator = SubResource("StyleBoxEmpty_d6nob")
 
 [node name="continue_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_eybj8")
 theme_override_font_sizes/font_size = 70
 text = "Continuar"
-visible = false
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -87,4 +87,3 @@ text = "Sair"
 
 [node name="mochi" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-
