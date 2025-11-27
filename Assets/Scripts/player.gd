@@ -37,8 +37,8 @@ var vida_atual: int = 100
 # (Esta parte provavelmente já existe. Você vai ADICIONAR 
 #  @export nelas para poderem ser editadas no Inspetor)
 
-@export var velocidade: float = 5000.0   # Velocidade aumentada para movimento mais rápido
-@export var forca_pulo: float = -2000.0  # Força do pulo estilo Mario (mais forte e rápido)
+@export var velocidade: float = 800.0   # Velocidade aumentada para movimento mais rápido
+@export var forca_pulo: float = -800.0  # Força do pulo estilo Mario (mais forte e rápido)
 @export var gravidade: float = 2800.0    # Gravidade alta estilo Mario (pulo rápido e responsivo)
 @export var gravidade_caindo: float = 3500.0  # Gravidade ainda maior quando caindo (estilo Mario)
 # Esta é a lista das "instâncias" de jaulas que o jogador possui.
@@ -63,6 +63,13 @@ func _ready():
 	if total_moedas == 0:
 		total_moedas = 500
 	moedas_atualizadas.emit(total_moedas)
+	
+	# Adicionar ao grupo "player" para ser encontrado facilmente
+	add_to_group("player")
+	
+	# Garantir que o player está na collision layer 1 para ser detectado pelas áreas
+	collision_layer = 1
+	collision_mask = 1
 	
 	# Busca o AnimatedSprite2D para poder virá-lo
 	sprite = get_node_or_null("AnimatedSprite2D")

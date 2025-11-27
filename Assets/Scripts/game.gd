@@ -3,12 +3,20 @@ extends Node2D
 const _SHOP_SCREEN:PackedScene = preload("res://Assets/Scene/shop_screen.tscn")
 const _PAUSE_MENU:PackedScene = preload("res://Assets/Scene/pause_menu.tscn")
 
+# Os desafios usam class_name então são acessíveis globalmente:
+# DesafioElefante, DesafioLeao, DesafioMacaco, DesafioGirafa, DesafioZebra
+
 @export_category("Objects")
 @export var _hud: CanvasLayer = null
 @export var _shop_button: Button = null
 @export var _player: CharacterBody2D = null
 @export var _moedas_label: Label = null
 @export var _placa_label: Label = null
+
+# Sistema de interação com placas
+var _prompt_interacao: PanelContainer = null
+var _placa_atual: PlacaInteracao = null
+var _desafio_ativo: bool = false
 
 # Sistema de renderização de animais nas jaulas
 var jaulas_visuais: Dictionary = {}  # {Cage: Node2D} - Container para cada jaula
@@ -33,6 +41,7 @@ func _ready() -> void:
 	_initialize_player()
 	_initialize_moedas_display()
 	_initialize_placa_label()
+	_initialize_prompt_interacao()
 	# Salvar que o jogo foi iniciado quando entrar na cena
 	SaveManager.save_game_started()
 	# Garantir que o input está sendo processado
@@ -46,6 +55,9 @@ func _ready() -> void:
 	
 	# Inicializar sistema de renderização de jaulas
 	call_deferred("_initialize_jaulas_visuais")
+	
+	# Criar áreas de interação para as placas
+	call_deferred("_criar_areas_interacao")
 
 func _initialize_shop_button() -> void:
 	if _shop_button:
@@ -124,6 +136,13 @@ func _input(event: InputEvent) -> void:
 			_open_pause_menu()
 		get_viewport().set_input_as_handled()
 		return
+	
+	# Interagir com placa usando E ou ESPAÇO
+	if event is InputEventKey and event.pressed and not _desafio_ativo:
+		if event.keycode == KEY_E and _placa_atual:
+			_on_desafio_solicitado(_placa_atual.tipo_desafio, _placa_atual)
+			get_viewport().set_input_as_handled()
+			return
 	
 	# Abrir loja com a tecla L (apenas se não estiver pausado)
 	if event is InputEventKey and event.pressed:
@@ -572,3 +591,254 @@ func _on_animal_comprado(jaula: Cage) -> void:
 	# Atualizar placa
 	_atualizar_placa_jaula()
 
+# =============================================================
+# Sistema de Interação com Placas e Desafios
+# =============================================================
+
+func _initialize_prompt_interacao() -> void:
+	if not _hud:
+		return
+	
+	# Criar o prompt de interação
+	_prompt_interacao = PanelContainer.new()
+	_prompt_interacao.name = "PromptInteracao"
+	_prompt_interacao.visible = false
+	
+	# Posicionar no centro inferior da tela
+	_prompt_interacao.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+	_prompt_interacao.position = Vector2(-200, -150)
+	_prompt_interacao.custom_minimum_size = Vector2(400, 80)
+	
+	# Estilizar o painel
+	var estilo = StyleBoxFlat.new()
+	estilo.bg_color = Color(0.1, 0.15, 0.1, 0.95)
+	estilo.border_color = Color(0.3, 0.8, 0.3, 1.0)
+	estilo.set_border_width_all(3)
+	estilo.set_corner_radius_all(15)
+	_prompt_interacao.add_theme_stylebox_override("panel", estilo)
+	
+	# Criar container interno
+	var margin = MarginContainer.new()
+	margin.add_theme_constant_override("margin_left", 20)
+	margin.add_theme_constant_override("margin_right", 20)
+	margin.add_theme_constant_override("margin_top", 15)
+	margin.add_theme_constant_override("margin_bottom", 15)
+	_prompt_interacao.add_child(margin)
+	
+	var vbox = VBoxContainer.new()
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	margin.add_child(vbox)
+	
+	# Carregar fonte
+	var font = load("res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf")
+	
+	# Label com instrução
+	var label = Label.new()
+	label.name = "PromptLabel"
+	label.text = "🎮 Pressione [E] para entrar no DESAFIO!"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	if font:
+		label.add_theme_font_override("font", font)
+	label.add_theme_font_size_override("font_size", 22)
+	label.add_theme_color_override("font_color", Color(0.9, 1.0, 0.9, 1.0))
+	vbox.add_child(label)
+	
+	# Label com nome da jaula
+	var nome_label = Label.new()
+	nome_label.name = "NomeJaulaLabel"
+	nome_label.text = ""
+	nome_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	if font:
+		nome_label.add_theme_font_override("font", font)
+	nome_label.add_theme_font_size_override("font_size", 18)
+	nome_label.add_theme_color_override("font_color", Color(1.0, 0.85, 0.3, 1.0))
+	vbox.add_child(nome_label)
+	
+	_hud.add_child(_prompt_interacao)
+	print("Prompt de interação criado!")
+
+func _criar_areas_interacao() -> void:
+	# Mapeamento direto dos caminhos das placas no game.tscn para os tipos de desafio
+	# Baseado na estrutura: ParallaxBackground/ParallaxLayer/Jaula X/PlacaX
+	var placas_config = [
+		{
+			"jaula_path": "ParallaxBackground/ParallaxLayer/Jaula Elefante",
+			"placa_nome": "PlacaElefante",
+			"tipo_desafio": "elefante",
+			"nome": "Jaula do Elefante - Adição e Subtração"
+		},
+		{
+			"jaula_path": "ParallaxBackground/ParallaxLayer/Jaula Leao",
+			"placa_nome": "PlacaLeao",
+			"tipo_desafio": "leao",
+			"nome": "Jaula do Leão - Multiplicação"
+		},
+		{
+			"jaula_path": "ParallaxBackground/ParallaxLayer/Jaula Macaco",
+			"placa_nome": "PlacaMacaco",
+			"tipo_desafio": "macaco",
+			"nome": "Jaula do Macaco - Divisão"
+		},
+		{
+			"jaula_path": "ParallaxBackground/ParallaxLayer/Jaula Girafa",
+			"placa_nome": "PlacaGirafa",
+			"tipo_desafio": "girafa",
+			"nome": "Jaula da Girafa - Regra de Três Simples"
+		},
+		{
+			"jaula_path": "ParallaxBackground/ParallaxLayer/Jaula Zebra",
+			"placa_nome": "PlacaZebra",
+			"tipo_desafio": "zebra",
+			"nome": "Jaula da Zebra - Regra de Três Composta"
+		}
+	]
+	
+	# Obter o ParallaxLayer para adicionar as áreas
+	var parallax_layer = get_node_or_null("ParallaxBackground/ParallaxLayer")
+	if not parallax_layer:
+		push_error("ParallaxLayer não encontrado!")
+		return
+	
+	print("=== Criando áreas de interação para placas ===")
+	
+	for config in placas_config:
+		# Buscar a jaula
+		var jaula_node = get_node_or_null(config.jaula_path)
+		if not jaula_node:
+			push_warning("✗ Jaula não encontrada: %s" % config.jaula_path)
+			continue
+		
+		# Buscar a placa dentro da jaula
+		var placa_node = jaula_node.get_node_or_null(config.placa_nome)
+		if not placa_node:
+			push_warning("✗ Placa '%s' não encontrada na jaula!" % config.placa_nome)
+			continue
+		
+		# Calcular posição real da placa no mundo
+		# Posição = Jaula.position + (Placa.position * Jaula.scale)
+		var jaula_pos = jaula_node.position
+		var jaula_scale = jaula_node.scale
+		var placa_pos_local = placa_node.position
+		
+		var pos_mundo = jaula_pos + Vector2(placa_pos_local.x * jaula_scale.x, placa_pos_local.y * jaula_scale.y)
+		
+		# Criar área e adicionar ao ParallaxLayer
+		var area = _criar_area_interacao(config.placa_nome, config, pos_mundo)
+		parallax_layer.add_child(area)
+		print("✓ Área criada para %s em posição: %s (jaula: %s, placa local: %s)" % [config.placa_nome, pos_mundo, jaula_pos, placa_pos_local])
+	
+	print("=== Áreas de interação criadas ===")
+
+func _criar_area_interacao(nome: String, config: Dictionary, pos_mundo: Vector2) -> PlacaInteracao:
+	var area = PlacaInteracao.new()
+	area.name = "AreaInteracao_" + nome
+	# Posição baseada na posição calculada da placa + offset para baixo (onde o jogador fica no chão)
+	area.position = pos_mundo + Vector2(0, 120)  # Offset para baixo da placa
+	area.tipo_desafio = config.tipo_desafio
+	area.nome_jaula = config.nome
+	
+	# Criar collision shape
+	var collision = CollisionShape2D.new()
+	collision.name = "CollisionShape2D"
+	
+	var shape = RectangleShape2D.new()
+	shape.size = Vector2(180, 200)  # Área para detectar o jogador
+	collision.shape = shape
+	
+	area.add_child(collision)
+	
+	# Conectar sinais
+	area.jogador_entrou.connect(_on_jogador_entrou_placa.bind(area))
+	area.jogador_saiu.connect(_on_jogador_saiu_placa.bind(area))
+	area.desafio_solicitado.connect(_on_desafio_solicitado.bind(area))
+	
+	return area
+
+func _on_jogador_entrou_placa(placa: PlacaInteracao) -> void:
+	if _desafio_ativo:
+		return
+	
+	_placa_atual = placa
+	_mostrar_prompt_interacao(placa.nome_jaula)
+
+func _on_jogador_saiu_placa(placa: PlacaInteracao) -> void:
+	if _placa_atual == placa:
+		_placa_atual = null
+		_esconder_prompt_interacao()
+
+func _mostrar_prompt_interacao(nome_jaula: String) -> void:
+	if _prompt_interacao:
+		_prompt_interacao.visible = true
+		var nome_label = _prompt_interacao.get_node_or_null("MarginContainer/VBoxContainer/NomeJaulaLabel")
+		if nome_label:
+			nome_label.text = nome_jaula
+		
+		# Iniciar animação de pulso
+		_animar_prompt()
+
+func _esconder_prompt_interacao() -> void:
+	if _prompt_interacao:
+		_prompt_interacao.visible = false
+		# Parar animação
+		var tween = get_tree().create_tween()
+		tween.kill()
+
+func _animar_prompt() -> void:
+	if not _prompt_interacao or not _prompt_interacao.visible:
+		return
+	
+	# Criar animação de pulso suave
+	var tween = create_tween()
+	tween.set_loops()
+	tween.tween_property(_prompt_interacao, "modulate:a", 0.7, 0.5)
+	tween.tween_property(_prompt_interacao, "modulate:a", 1.0, 0.5)
+
+func _on_desafio_solicitado(tipo_desafio: String, placa: PlacaInteracao) -> void:
+	if _desafio_ativo:
+		return
+	
+	print("Iniciando desafio: ", tipo_desafio)
+	_esconder_prompt_interacao()
+	_iniciar_desafio(tipo_desafio)
+
+func _iniciar_desafio(tipo: String) -> void:
+	if not _hud or not _player:
+		push_error("HUD ou Player não encontrado para iniciar desafio!")
+		return
+	
+	_desafio_ativo = true
+	
+	# Criar a cena do desafio baseado no tipo
+	var desafio: DesafioBase = null
+	
+	match tipo:
+		"elefante":
+			desafio = DesafioElefante.new()
+		"leao":
+			desafio = DesafioLeao.new()
+		"macaco":
+			desafio = DesafioMacaco.new()
+		"girafa":
+			desafio = DesafioGirafa.new()
+		"zebra":
+			desafio = DesafioZebra.new()
+		_:
+			push_error("Tipo de desafio desconhecido: %s" % tipo)
+			_desafio_ativo = false
+			return
+	
+	if desafio:
+		desafio.set_player(_player)
+		desafio.desafio_concluido.connect(_on_desafio_concluido)
+		desafio.desafio_cancelado.connect(_on_desafio_cancelado)
+		_hud.add_child(desafio)
+		print("Desafio '%s' iniciado!" % tipo)
+
+func _on_desafio_concluido(acertos: int, total: int, moedas_ganhas: int) -> void:
+	print("Desafio concluído! Acertos: %d/%d | Moedas: +%d" % [acertos, total, moedas_ganhas])
+	_desafio_ativo = false
+	_update_moedas_display()
+
+func _on_desafio_cancelado() -> void:
+	print("Desafio cancelado!")
+	_desafio_ativo = false

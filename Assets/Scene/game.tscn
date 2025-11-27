@@ -44,7 +44,7 @@ position = Vector2(967, 533)
 scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
-[node name="PlacaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Elefante"]
+[node name="PlacaElefante" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Elefante"]
 position = Vector2(250.24542, 249.25)
 scale = Vector2(1.4923377, 2.570312)
 texture = ExtResource("18_fsb1f")
@@ -54,7 +54,7 @@ position = Vector2(2887, 533)
 scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
-[node name="PlacaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Leao"]
+[node name="PlacaLeao" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Leao"]
 position = Vector2(250.24542, 249.25)
 scale = Vector2(1.4923377, 2.570312)
 texture = ExtResource("18_fsb1f")
@@ -64,7 +64,7 @@ position = Vector2(4804, 533)
 scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
-[node name="PlacaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Macaco"]
+[node name="PlacaMacaco" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Macaco"]
 position = Vector2(250.24542, 249.25)
 scale = Vector2(1.4923377, 2.570312)
 texture = ExtResource("18_fsb1f")
@@ -74,7 +74,7 @@ position = Vector2(6723.9995, 533)
 scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
-[node name="PlacaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Girafa"]
+[node name="PlacaGirafa" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Girafa"]
 position = Vector2(250.24542, 249.25)
 scale = Vector2(1.4923377, 2.570312)
 texture = ExtResource("18_fsb1f")
@@ -84,7 +84,7 @@ position = Vector2(8644, 533)
 scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
-[node name="PlacaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Zebra"]
+[node name="PlacaZebra" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Zebra"]
 position = Vector2(250.24542, 249.25)
 scale = Vector2(1.4923377, 2.570312)
 texture = ExtResource("18_fsb1f")
