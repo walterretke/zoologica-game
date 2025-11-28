@@ -14,6 +14,50 @@ func _ready() -> void:
 	tempo_por_pergunta = 60.0
 	super._ready()
 
+func _obter_conteudo_ajuda(ajuda_label: RichTextLabel) -> void:
+	ajuda_label.text = """[center][font_size=32]🦒 REGRA DE TRÊS SIMPLES[/font_size][/center]
+
+[font_size=24]O QUE É:[/font_size]
+[font_size=20]Usada quando temos 2 grandezas relacionadas diretamente.[/font_size]
+
+[font_size=24]FÓRMULA:[/font_size]
+[font_size=20]a está para b, assim como c está para x[/font_size]
+[font_size=20]a/b = c/x  →  x = (b × c) ÷ a[/font_size]
+
+[font_size=24]COMO RESOLVER - PASSO A PASSO:[/font_size]
+
+[font_size=20]1. ORGANIZE OS DADOS:[/font_size]
+   Escreva o que você sabe e o que quer descobrir.
+
+[font_size=20]2. MONTE A PROPORÇÃO:[/font_size]
+   Coloque as grandezas na mesma ordem:
+   Primeira situação → Segunda situação
+
+[font_size=20]3. MULTIPLIQUE EM CRUZ:[/font_size]
+   Multiplique os valores que estão na diagonal.
+
+[font_size=20]4. ISOLE O X:[/font_size]
+   Divida o resultado pelo número que está com o x.
+
+[font_size=24]EXEMPLO PRÁTICO:[/font_size]
+
+[font_size=20]Problema:[/font_size]
+Se 3 girafas comem 12 kg de folhas por dia,
+quantos kg 5 girafas comerão?
+
+[font_size=20]Solução:[/font_size]
+1. Organize: 3 girafas → 12 kg
+             5 girafas → x kg
+
+2. Monte: 3/12 = 5/x
+
+3. Multiplique em cruz: 3 × x = 12 × 5
+                       3x = 60
+
+4. Isole o x: x = 60 ÷ 3 = 20 kg
+
+[font_size=20]RESPOSTA: 5 girafas comerão 20 kg de folhas[/font_size]"""
+
 func _gerar_pergunta() -> void:
 	# Regra de três simples: a está para b assim como c está para x
 	# a/b = c/x  ->  x = (b * c) / a

@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://intro_story_001"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/intro_story.gd" id="1_intro"]
+[ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="2_font"]
+[ext_resource type="Theme" uid="uid://cwjaoo03ur0mh" path="res://Assets/Botoes/default_btn.tres" id="3_theme"]
+
+[node name="IntroStory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_intro")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.1, 0.15, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="SpacerTop" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 50)
+
+[node name="CharacterImageContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="CharacterImage" type="TextureRect" parent="VBoxContainer/CharacterImageContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 250)
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CharacterName" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 36
+text = ""
+horizontal_alignment = 1
+
+[node name="StoryLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+custom_minimum_size = Vector2(1000, 300)
+theme_override_fonts/normal_font = ExtResource("2_font")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_colors/default_color = Color(1, 1, 0.9, 1)
+bbcode_enabled = true
+text = "Carregando história..."
+autowrap_mode = 3
+
+[node name="SpacerBottom" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+custom_minimum_size = Vector2(0, 20)
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+custom_minimum_size = Vector2(400, 80)
+theme = ExtResource("3_theme")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 36
+text = "CONTINUAR"

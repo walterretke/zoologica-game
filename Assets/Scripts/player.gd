@@ -37,7 +37,8 @@ var vida_atual: int = 100
 # (Esta parte provavelmente já existe. Você vai ADICIONAR 
 #  @export nelas para poderem ser editadas no Inspetor)
 
-@export var velocidade: float = 1000.0   # Velocidade aumentada para movimento mais rápido
+@export var velocidade: float = 500.0   # Velocidade aumentada para movimento mais rápido
+@export var velocidade_corrida: float = 1000.0  # Velocidade quando correndo (com Shift)
 @export var forca_pulo: float = -600.0  # Força do pulo estilo Mario (mais forte e rápido)
 @export var gravidade: float = 2800.0    # Gravidade alta estilo Mario (pulo rápido e responsivo)
 @export var gravidade_caindo: float = 3500.0  # Gravidade ainda maior quando caindo (estilo Mario)
@@ -80,12 +81,20 @@ func _ready():
 				sprite = child
 				break
 	
-	# Inicializa o jogador com uma jaula de elefante se ainda não tiver nenhuma
-	if jaulas_possuidas.is_empty():
+	# Configurar sprite para pixel art nítido (sem blur)
+	if sprite:
+		# texture_filter = 0 significa "nearest" (pixel perfect) em vez de "linear" (blur)
+		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		# Garantir que o sprite seja renderizado em pixels inteiros
+		sprite.position = sprite.position.round()
+	
+	# Inicializa o jogador com uma jaula de elefante se ainda não tiver nenhuma E não houver save
+	# (O save será carregado depois, então não devemos inicializar aqui se houver save)
+	if jaulas_possuidas.is_empty() and not SaveManager.has_save():
 		var elephant_cage_type = load("res://Assets/DataModels/elephant_cage.tres") as CageType
 		if elephant_cage_type:
 			var jaula_elefante = Cage.new(elephant_cage_type)
-			# Adiciona automaticamente o primeiro animal compatível (toda jaula vem com um animal)
+			# Adiciona automaticamente o primeiro animal compatível (apenas para a jaula do elefante)
 			if not elephant_cage_type.animal_templates_aceitos.is_empty():
 				var primeiro_animal_template = elephant_cage_type.animal_templates_aceitos[0]
 				var animal_inicial = Animal.new(primeiro_animal_template)
@@ -113,8 +122,18 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = forca_pulo # <-- MODIFICAÇÃO: Usando sua variável `forca_pulo`
 
-	# Checa movimento Esquerda/Direita
-	var direcao = Input.get_axis("ui_left", "ui_right")
+	# Checa movimento Esquerda/Direita (setas ou WASD)
+	var direcao = 0.0
+	
+	# Verifica teclas WASD e setas
+	if Input.is_key_pressed(KEY_A) or Input.is_action_pressed("ui_left"):
+		direcao = -1.0  # Esquerda
+	elif Input.is_key_pressed(KEY_D) or Input.is_action_pressed("ui_right"):
+		direcao = 1.0   # Direita
+	
+	# Verifica se Shift está pressionado (esquerdo ou direito) para correr
+	# No Godot, usamos KEY_SHIFT para detectar qualquer Shift
+	var esta_correndo = Input.is_key_pressed(KEY_SHIFT)
 	
 	# Aplica limites ANTES do movimento para evitar sair do mapa
 	if global_position.x <= limite_esquerda and direcao < 0:
@@ -125,7 +144,9 @@ func _physics_process(delta):
 		velocity.x = 0
 	
 	if direcao:
-		velocity.x = direcao * velocidade # <-- MODIFICAÇÃO: Usando sua variável `velocidade`
+		# Usa velocidade de corrida se Shift estiver pressionado, senão velocidade normal
+		var vel_atual = velocidade_corrida if esta_correndo else velocidade
+		velocity.x = direcao * vel_atual
 		
 		# Vira o sprite baseado na direção do movimento
 		if sprite:
@@ -138,6 +159,9 @@ func _physics_process(delta):
 
 	# Função mágica que move o personagem
 	move_and_slide()
+	
+	# Alinhar posição a pixels inteiros para evitar blur (pixel art)
+	global_position = global_position.round()
 	
 	# Limita a posição do jogador dentro dos limites do mapa (garantia extra)
 	if global_position.x < limite_esquerda:
@@ -153,12 +177,12 @@ func _physics_process(delta):
 		velocity.y = 0
 	
 	# --- ANIMAÇÕES ---
-	_atualizar_animacao(direcao)
+	_atualizar_animacao(direcao, esta_correndo)
 	
 	# --- FIM DO CÓDIGO DELES ---
 
 # Função para atualizar a animação baseada no estado do jogador
-func _atualizar_animacao(direcao: float) -> void:
+func _atualizar_animacao(direcao: float, esta_correndo: bool = false) -> void:
 	if not sprite:
 		return
 	
@@ -170,11 +194,12 @@ func _atualizar_animacao(direcao: float) -> void:
 	
 	# Se está se movendo no chão
 	if direcao != 0:
-		# Usa "run" se estiver em alta velocidade, senão "walk"
-		if abs(velocity.x) > velocidade * 0.7:
+		# Se está correndo (Shift pressionado), usa animação "run"
+		if esta_correndo:
 			if sprite.animation != "run":
 				sprite.play("run")
 		else:
+			# Caminhando normalmente - usa "walk"
 			if sprite.animation != "walk":
 				sprite.play("walk")
 	else:

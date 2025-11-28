@@ -54,4 +54,3 @@ static func get_space_color(current: int, max_animals: int) -> Color:
 		return Color(1, 0.8, 0.3, 1)  # Laranja - pouco espaço
 	else:
 		return Color(0.3, 1, 0.3, 1)  # Verde - espaço suficiente
-

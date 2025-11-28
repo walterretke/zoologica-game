@@ -15,6 +15,29 @@ func _ready() -> void:
 	tempo_por_pergunta = 45.0
 	super._ready()
 
+func _obter_conteudo_ajuda(ajuda_label: RichTextLabel) -> void:
+	ajuda_label.text = """[center][font_size=32]🐒 DIVISÃO[/font_size][/center]
+
+[font_size=24]FÓRMULA:[/font_size]
+
+[font_size=20]• Divisão: a ÷ b = c[/font_size]
+
+[font_size=24]COMO RESOLVER:[/font_size]
+
+[font_size=20]DIVISÃO (÷):[/font_size]
+Divida o primeiro número pelo segundo.
+Exemplo: 24 ÷ 6 = 4
+
+[font_size=20]DICAS:[/font_size]
+• Divisão é o oposto da multiplicação
+• Se 6 × 4 = 24, então 24 ÷ 6 = 4
+• Pense: "Quantas vezes b cabe em a?"
+• Use a tabuada para verificar
+
+[font_size=20]EXEMPLO:[/font_size]
+30 ÷ 5 = 6
+(Porque 5 × 6 = 30)"""
+
 func _gerar_pergunta() -> void:
 	var dividendo: int
 	var divisor: int

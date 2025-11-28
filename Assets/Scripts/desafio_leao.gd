@@ -14,6 +14,29 @@ func _ready() -> void:
 	tempo_por_pergunta = 40.0
 	super._ready()
 
+func _obter_conteudo_ajuda(ajuda_label: RichTextLabel) -> void:
+	ajuda_label.text = """[center][font_size=32]🦁 MULTIPLICAÇÃO[/font_size][/center]
+
+[font_size=24]FÓRMULA:[/font_size]
+
+[font_size=20]• Multiplicação: a × b = c[/font_size]
+
+[font_size=24]COMO RESOLVER:[/font_size]
+
+[font_size=20]MULTIPLICAÇÃO (×):[/font_size]
+Multiplique o primeiro número pelo segundo.
+Exemplo: 7 × 8 = 56
+
+[font_size=20]DICAS:[/font_size]
+• Multiplicar é somar várias vezes
+• 5 × 3 = 5 + 5 + 5 = 15
+• Use a tabuada para números menores
+• Para números maiores, multiplique normalmente
+
+[font_size=20]EXEMPLO:[/font_size]
+12 × 4 = 48
+(12 + 12 + 12 + 12 = 48)"""
+
 func _gerar_pergunta() -> void:
 	var num1: int
 	var num2: int

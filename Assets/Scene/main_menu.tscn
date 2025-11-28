@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw6mgldta3e6h"]
+[gd_scene load_steps=6 format=3 uid="uid://cw6mgldta3e6h"]
 
 [ext_resource type="Texture2D" uid="uid://mpuoov6u5oed" path="res://Assets/Mapa/TELA INICIAL.png" id="1_bg"]
 [ext_resource type="Script" uid="uid://d3pew582gl0yn" path="res://Assets/Scripts/main_menu.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://c4xqjbhwtype5" path="res://Assets/Sprites/Assests_Jogo/Jogo/0.3 - Placa Info Bichos.png" id="3_dwgjd"]
 [ext_resource type="Theme" uid="uid://cwjaoo03ur0mh" path="res://Assets/Botoes/default_btn.tres" id="3_theme"]
 [ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="4_font"]
 
@@ -25,6 +26,15 @@ texture = ExtResource("1_bg")
 expand_mode = 1
 stretch_mode = 6
 
+[node name="PainelMadeira" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 603.0
+offset_top = 424.0
+offset_right = 2132.0
+offset_bottom = 1641.0
+scale = Vector2(0.44698, 0.5256648)
+texture = ExtResource("3_dwgjd")
+
 [node name="ContainerIniciar" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -32,10 +42,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -219.0
-offset_top = -12.0
-offset_right = 181.0
-offset_bottom = 58.0
+offset_left = -235.0
+offset_top = -1.0
+offset_right = 190.0
+offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -46,7 +56,30 @@ theme = ExtResource("3_theme")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 40
-text = "Iniciar Jogo"
+text = "CRIAR NOVO JOGO"
+
+[node name="ContainerCarregar" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = 81.0
+offset_right = 177.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnCarregar" type="Button" parent="ContainerCarregar"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme = ExtResource("3_theme")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 40
+text = "CARREGAR JOGO"
 
 [node name="ContainerCreditos" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -55,10 +88,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -237.0
-offset_top = 173.0
-offset_right = 163.0
-offset_bottom = 243.0
+offset_left = -229.0
+offset_top = 248.0
+offset_right = 171.0
+offset_bottom = 318.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -71,6 +104,29 @@ theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 40
 text = "Créditos"
 
+[node name="ContainerConfiguracoes" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = 168.0
+offset_right = 176.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnConfiguracoes" type="Button" parent="ContainerConfiguracoes"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme = ExtResource("3_theme")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 40
+text = "Configurações"
+
 [node name="ContainerSair" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -78,10 +134,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -229.0
-offset_top = 366.0
-offset_right = 171.0
-offset_bottom = 436.0
+offset_left = -234.0
+offset_top = 333.0
+offset_right = 166.0
+offset_bottom = 403.0
 grow_horizontal = 2
 grow_vertical = 2
 

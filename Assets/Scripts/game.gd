@@ -2,6 +2,7 @@ extends Node2D
 
 const _SHOP_SCREEN:PackedScene = preload("res://Assets/Scene/shop_screen.tscn")
 const _PAUSE_MENU:PackedScene = preload("res://Assets/Scene/pause_menu.tscn")
+const _KEYMAP_DISPLAY:PackedScene = preload("res://Assets/Scene/keymap_display.tscn")
 
 # Os desafios usam class_name então são acessíveis globalmente:
 # DesafioElefante, DesafioLeao, DesafioMacaco, DesafioGirafa, DesafioZebra
@@ -41,11 +42,23 @@ func _ready() -> void:
 	
 	_initialize_shop_button()
 	_initialize_player()
+	
+	# IMPORTANTE: Carregar save ANTES de inicializar qualquer coisa relacionada a jaulas
+	# Isso evita que o player inicialize a jaula do elefante quando há save
+	if SaveManager.has_save():
+		print("Save encontrado! Carregando jogo...")
+		# Carregar dados primeiro (síncrono para garantir ordem)
+		_carregar_jogo_salvo()
+	else:
+		print("Nenhum save encontrado. Iniciando novo jogo...")
+		# Salvar que o jogo foi iniciado quando entrar na cena (novo jogo)
+		SaveManager.save_game_started()
+	
+	# Agora inicializar UI e sistemas visuais
 	_initialize_moedas_display()
 	_initialize_placa_label()
 	_initialize_prompt_interacao()
-	# Salvar que o jogo foi iniciado quando entrar na cena
-	SaveManager.save_game_started()
+	
 	# Garantir que o input está sendo processado
 	set_process_input(true)
 	set_process_unhandled_input(true)
@@ -55,7 +68,7 @@ func _ready() -> void:
 	else:
 		print("HUD encontrado: ", _hud.name)
 	
-	# Inicializar sistema de renderização de jaulas
+	# Inicializar sistema de renderização de jaulas (após carregar save)
 	call_deferred("_initialize_jaulas_visuais")
 	
 	# Criar áreas de interação para as placas
@@ -63,6 +76,43 @@ func _ready() -> void:
 	
 	# Mapear áreas dos Assets das jaulas
 	call_deferred("_mapear_areas_assets")
+	
+	# Mostrar mapa de teclas ao iniciar o jogo
+	call_deferred("_mostrar_mapa_teclas")
+	
+	# Iniciar música do jogo
+	var audio_manager = get_node_or_null("/root/AudioManager")
+	if audio_manager:
+		audio_manager.play_game_music()
+
+func _carregar_jogo_salvo() -> void:
+	if not _player:
+		push_error("Player não encontrado para carregar jogo!")
+		return
+	
+	print("=== INICIANDO CARREGAMENTO DO SAVE ===")
+	print("Player antes do carregamento:")
+	print("  - Moedas: %d" % _player.total_moedas)
+	print("  - Jaulas: %d" % _player.jaulas_possuidas.size())
+	
+	var loaded = SaveManager.load_game(_player)
+	
+	print("=== RESULTADO DO CARREGAMENTO ===")
+	if loaded:
+		print("✓ Jogo carregado com sucesso!")
+		print("  - Moedas: %d" % _player.total_moedas)
+		print("  - Posição: %s" % _player.global_position)
+		print("  - Jaulas: %d" % _player.jaulas_possuidas.size())
+		for i in range(_player.jaulas_possuidas.size()):
+			var jaula = _player.jaulas_possuidas[i]
+			if jaula and jaula.cage_type:
+				print("    - %s: %d animais" % [jaula.cage_type.nome_exibicao, jaula.animals.size()])
+		
+		# Atualizar display de moedas
+		_initialize_moedas_display()
+	else:
+		push_error("Erro ao carregar jogo! Iniciando novo jogo...")
+		SaveManager.save_game_started()
 
 func _initialize_shop_button() -> void:
 	if _shop_button:
@@ -134,6 +184,12 @@ func _initialize_placa_label() -> void:
 	_atualizar_placa_jaula()
 
 func _input(event: InputEvent) -> void:
+	# Mostrar/Esconder mapa de teclas com H
+	if event is InputEventKey and event.pressed and event.keycode == KEY_H:
+		_toggle_mapa_teclas()
+		get_viewport().set_input_as_handled()
+		return
+	
 	# Abrir menu de pausa com ESC (apenas se não estiver pausado)
 	if event.is_action_pressed("ui_cancel") or (event is InputEventKey and event.keycode == KEY_ESCAPE and event.pressed):
 		print("ESC pressionado no game.gd - pausado: ", get_tree().paused)
@@ -217,6 +273,50 @@ func _open_pause_menu() -> void:
 	
 	_hud.add_child(pause_menu)
 	print("Menu de pausa aberto!")
+
+# =============================================================
+# Sistema de Mapa de Teclas
+# =============================================================
+
+func _mostrar_mapa_teclas() -> void:
+	if not _hud:
+		push_error("HUD não encontrado! Não é possível mostrar o mapa de teclas.")
+		return
+	
+	# Verificar se o mapa de teclas já está aberto
+	for child in _hud.get_children():
+		# Verificar se é KeymapDisplay pelo nome do script ou método característico
+		if child.get_script() and child.get_script().resource_path.ends_with("keymap_display.gd"):
+			return  # Mapa de teclas já está aberto
+	
+	# Criar e adicionar o mapa de teclas
+	var keymap_display = _KEYMAP_DISPLAY.instantiate()
+	if not keymap_display:
+		push_error("Falha ao instanciar o mapa de teclas!")
+		return
+	
+	_hud.add_child(keymap_display)
+	print("Mapa de teclas exibido!")
+
+func _toggle_mapa_teclas() -> void:
+	if not _hud:
+		return
+	
+	# Verificar se o mapa de teclas já está aberto
+	var keymap_existente = null
+	for child in _hud.get_children():
+		# Verificar se é KeymapDisplay pelo nome do script
+		if child.get_script() and child.get_script().resource_path.ends_with("keymap_display.gd"):
+			keymap_existente = child
+			break
+	
+	if keymap_existente:
+		# Fechar se já estiver aberto
+		keymap_existente.queue_free()
+		print("Mapa de teclas fechado!")
+	else:
+		# Abrir se estiver fechado
+		_mostrar_mapa_teclas()
 
 # =============================================================
 # Sistema de Renderização de Jaulas e Animais

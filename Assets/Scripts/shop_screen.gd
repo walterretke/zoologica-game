@@ -247,6 +247,9 @@ func _on_cage_purchased(cage_type: CageType) -> void:
 			var game_node = game_nodes[0] as Node2D
 			if game_node and game_node.has_method("_on_jaula_comprada"):
 				game_node._on_jaula_comprada(cage_type)
+		
+		# Salvar automaticamente após compra
+		SaveManager.save_game(player)
 	
 	# Atualizar a UI
 	_update_ui()
@@ -284,6 +287,9 @@ func _on_animal_purchased(animal_template: AnimalTemplate, target_cage: Cage) ->
 			var scene_root = get_tree().current_scene
 			if scene_root and scene_root.has_method("_on_animal_comprado"):
 				scene_root._on_animal_comprado(target_cage)
+		
+		# Salvar automaticamente após compra
+		SaveManager.save_game(player)
 	
 	# Atualizar a UI
 	_update_ui()

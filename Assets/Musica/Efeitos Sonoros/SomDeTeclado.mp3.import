@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dahpv0qvkwhqu"
+path="res://.godot/imported/SomDeTeclado.mp3-4b523256d1ef06bf6a56b9af5d7e3cdf.mp3str"
+
+[deps]
+
+source_file="res://Assets/Musica/Efeitos Sonoros/SomDeTeclado.mp3"
+dest_files=["res://.godot/imported/SomDeTeclado.mp3-4b523256d1ef06bf6a56b9af5d7e3cdf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

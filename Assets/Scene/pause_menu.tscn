@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpfw0njocm4y4"]
+[gd_scene load_steps=5 format=3 uid="uid://cpfw0njocm4y4"]
 
 [ext_resource type="Script" uid="uid://btx2aca8cw0jm" path="res://Assets/Scripts/pause_menu.gd" id="1_pause"]
 [ext_resource type="Theme" uid="uid://cwjaoo03ur0mh" path="res://Assets/Botoes/default_btn.tres" id="2_theme"]
 [ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="3_font"]
+[ext_resource type="PackedScene" uid="uid://clctv3u6n36jk" path="res://Assets/Scene/settings.tscn" id="4_settings"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -61,6 +62,38 @@ theme_override_font_sizes/font_size = 60
 text = "Retomar"
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="save_btn" type="Button" parent="CenterContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_theme")
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 60
+text = "Salvar Jogo"
+
+[node name="HSeparator3" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="settings_btn" type="Button" parent="CenterContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_theme")
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 60
+text = "Configurações"
+
+[node name="HSeparator4" type="HSeparator" parent="CenterContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2

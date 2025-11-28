@@ -1,0 +1,264 @@
+[gd_scene load_steps=3 format=3 uid="uid://keymap_display_001"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/keymap_display.gd" id="1_keymap"]
+[ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="2_font"]
+
+[node name="KeymapDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_keymap")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(600, 700)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 42
+text = "MAPA DE TECLAS"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 10)
+
+[node name="KeysContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="KeyRow1" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="KeyLabel1" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow1"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 0)
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "A / ←"
+horizontal_alignment = 1
+
+[node name="DescLabel1" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Mover para esquerda"
+autowrap_mode = 3
+
+[node name="KeyRow2" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="KeyLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow2"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 0)
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "D / →"
+horizontal_alignment = 1
+
+[node name="DescLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Mover para direita"
+autowrap_mode = 3
+
+[node name="KeyRow3" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="KeyLabel3" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow3"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 0)
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "SHIFT"
+horizontal_alignment = 1
+
+[node name="DescLabel3" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Correr (segure enquanto se move)"
+autowrap_mode = 3
+
+[node name="KeyRow4" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="KeyLabel4" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow4"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 0)
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "ESPAÇO"
+horizontal_alignment = 1
+
+[node name="DescLabel4" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Pular"
+autowrap_mode = 3
+
+[node name="KeyRow5" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="KeyLabel5" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow5"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 0)
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "E / ESPAÇO"
+horizontal_alignment = 1
+
+[node name="DescLabel5" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Interagir com placas (iniciar desafios)"
+autowrap_mode = 3
+
+[node name="KeyRow6" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="KeyLabel6" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow6"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 0)
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "L"
+horizontal_alignment = 1
+
+[node name="DescLabel6" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Abrir loja"
+autowrap_mode = 3
+
+[node name="KeyRow7" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="KeyLabel7" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow7"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 0)
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "ESC"
+horizontal_alignment = 1
+
+[node name="DescLabel7" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Abrir menu de pausa"
+autowrap_mode = 3
+
+[node name="KeyRow8" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="KeyLabel8" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow8"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 0)
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "H"
+horizontal_alignment = 1
+
+[node name="DescLabel8" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/KeysContainer/KeyRow8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Mostrar/Esconder este mapa de teclas"
+autowrap_mode = 3
+
+[node name="Spacer2" type="Control" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 10)
+
+[node name="CloseLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Pressione H para fechar"
+horizontal_alignment = 1
+

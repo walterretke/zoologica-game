@@ -14,6 +14,61 @@ func _ready() -> void:
 	tempo_por_pergunta = 75.0
 	super._ready()
 
+func _obter_conteudo_ajuda(ajuda_label: RichTextLabel) -> void:
+	ajuda_label.text = """[center][font_size=32]🦓 REGRA DE TRÊS COMPOSTA[/font_size][/center]
+
+[font_size=24]O QUE É:[/font_size]
+[font_size=20]Usada quando temos 3 ou mais grandezas relacionadas.[/font_size]
+
+[font_size=24]TIPOS DE PROPORÇÃO:[/font_size]
+
+[font_size=20]DIRETA:[/font_size]
+Quando uma grandeza aumenta, a outra também aumenta.
+Exemplo: Mais animais = Mais comida
+
+[font_size=20]INVERSA:[/font_size]
+Quando uma grandeza aumenta, a outra diminui.
+Exemplo: Mais trabalhadores = Menos tempo
+
+[font_size=24]COMO RESOLVER - PASSO A PASSO:[/font_size]
+
+[font_size=20]1. IDENTIFIQUE AS GRANDEZAS:[/font_size]
+   Liste todas as informações do problema.
+
+[font_size=20]2. CLASSIFIQUE CADA GRANDEZA:[/font_size]
+   Veja se é direta ou inversa em relação ao que quer descobrir.
+
+[font_size=20]3. MONTE A FÓRMULA:[/font_size]
+   x = (valor conhecido × grandezas diretas) ÷ (grandezas inversas)
+
+[font_size=20]4. MULTIPLIQUE E DIVIDA:[/font_size]
+   Multiplique os valores diretos e divida pelos inversos.
+
+[font_size=24]EXEMPLO PRÁTICO:[/font_size]
+
+[font_size=20]Problema:[/font_size]
+Se 4 tratadores alimentam 20 zebras em 3 horas,
+quantas horas 6 tratadores levarão para 30 zebras?
+
+[font_size=20]Análise:[/font_size]
+• Mais tratadores = Menos tempo (INVERSA)
+• Mais zebras = Mais tempo (DIRETA)
+
+[font_size=20]Solução:[/font_size]
+1. Organize: 4 tratadores, 20 zebras → 3 horas
+             6 tratadores, 30 zebras → x horas
+
+2. Classifique:
+   Tratadores: INVERSA (mais = menos tempo)
+   Zebras: DIRETA (mais = mais tempo)
+
+3. Fórmula:
+   x = (3 × 4 × 30) ÷ (6 × 20)
+   x = 360 ÷ 120
+   x = 3 horas
+
+[font_size=20]RESPOSTA: 6 tratadores levarão 3 horas[/font_size]"""
+
 func _gerar_pergunta() -> void:
 	# Regra de três composta com 2 grandezas
 	# Diretamente proporcional: quanto mais, mais

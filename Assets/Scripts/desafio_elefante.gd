@@ -19,6 +19,28 @@ func _ready() -> void:
 	tempo_por_pergunta = 45.0
 	super._ready()
 
+func _obter_conteudo_ajuda(ajuda_label: RichTextLabel) -> void:
+	ajuda_label.text = """[center][font_size=32]🐘 ADIÇÃO E SUBTRAÇÃO[/font_size][/center]
+
+[font_size=24]FÓRMULAS:[/font_size]
+
+[font_size=20]• Adição: a + b = c[/font_size]
+[font_size=20]• Subtração: a - b = c[/font_size]
+
+[font_size=24]COMO RESOLVER:[/font_size]
+
+[font_size=20]ADIÇÃO (+):[/font_size]
+Some os números normalmente.
+Exemplo: 15 + 23 = 38
+
+[font_size=20]SUBTRAÇÃO (-):[/font_size]
+Subtraia o segundo número do primeiro.
+Exemplo: 50 - 23 = 27
+
+[font_size=20]DICA:[/font_size]
+• Na adição, você está juntando quantidades
+• Na subtração, você está tirando uma quantidade de outra"""
+
 func _gerar_pergunta() -> void:
 	var num1: int
 	var num2: int

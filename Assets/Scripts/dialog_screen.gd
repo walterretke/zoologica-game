@@ -71,11 +71,35 @@ func _start_typing_animation() -> void:
 	_is_typing = true
 	can_skip = true
 	
+	# Obter o texto completo para verificar caracteres
+	var full_text = _dialog.text
+	var total_chars = full_text.length()
+	
+	print("Iniciando animação de digitação. Total de caracteres: ", total_chars)
+	
 	# Animar o texto aparecendo
-	while _dialog.visible_ratio < 1.0:
+	while _dialog.visible_characters < total_chars and _is_typing:
 		var current_speed = fast_typing_speed if Input.is_action_pressed("ui_accept") else typing_speed
+		
+		# Obter o caractere que será mostrado agora
+		var next_char_index = _dialog.visible_characters
+		if next_char_index < total_chars:
+			var next_char = full_text[next_char_index]
+			
+			# Se for início de tag BBCode, pular até o fim da tag
+			if next_char == "[":
+				# Encontrar o fim da tag
+				var tag_end = full_text.find("]", next_char_index)
+				if tag_end != -1:
+					# Pular toda a tag de uma vez
+					_dialog.visible_characters = tag_end + 1
+					continue
+		
 		await get_tree().create_timer(current_speed).timeout
-		_dialog.visible_characters += 1
+		
+		# Verificar se ainda está digitando (pode ter sido pulado)
+		if _is_typing:
+			_dialog.visible_characters += 1
 	
 	_is_typing = false
 	can_skip = false

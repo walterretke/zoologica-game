@@ -37,7 +37,8 @@ var _player: CharacterBody2D = null
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_configurar_ui()
-	_iniciar_desafio()
+	# Mostrar ajuda primeiro, depois iniciar desafio
+	_mostrar_ajuda()
 
 func _process(delta: float) -> void:
 	# Não processar timer se o jogo estiver pausado
@@ -65,6 +66,7 @@ func _configurar_ui() -> void:
 	_painel_principal.set_anchors_preset(Control.PRESET_CENTER)
 	_painel_principal.custom_minimum_size = Vector2(700, 500)
 	_painel_principal.position = Vector2(-350, -250)
+	_painel_principal.visible = false  # Esconder até a ajuda ser fechada
 	
 	# Estilizar o painel
 	var estilo = StyleBoxFlat.new()
@@ -247,6 +249,108 @@ func _configurar_ui() -> void:
 	_pular_btn.add_theme_font_size_override("font_size", 20)
 	_pular_btn.pressed.connect(_pular_pergunta)
 	botoes_hbox.add_child(_pular_btn)
+
+var _painel_ajuda: PanelContainer = null
+var _ajuda_visivel: bool = false
+
+func _mostrar_ajuda() -> void:
+	# Criar painel de ajuda
+	_ajuda_visivel = true
+	_painel_ajuda = PanelContainer.new()
+	_painel_ajuda.name = "PainelAjuda"
+	_painel_ajuda.set_anchors_preset(Control.PRESET_CENTER)
+	_painel_ajuda.custom_minimum_size = Vector2(800, 600)
+	_painel_ajuda.position = Vector2(-400, -300)
+	
+	# Estilizar o painel de ajuda
+	var estilo_ajuda = StyleBoxFlat.new()
+	estilo_ajuda.bg_color = Color(0.1, 0.15, 0.2, 0.95)
+	estilo_ajuda.border_color = Color(0.3, 0.6, 0.9, 1.0)
+	estilo_ajuda.set_border_width_all(4)
+	estilo_ajuda.set_corner_radius_all(20)
+	_painel_ajuda.add_theme_stylebox_override("panel", estilo_ajuda)
+	add_child(_painel_ajuda)
+	
+	var vbox_ajuda = VBoxContainer.new()
+	vbox_ajuda.add_theme_constant_override("separation", 20)
+	_painel_ajuda.add_child(vbox_ajuda)
+	
+	var margin_ajuda = MarginContainer.new()
+	margin_ajuda.add_theme_constant_override("margin_left", 40)
+	margin_ajuda.add_theme_constant_override("margin_right", 40)
+	margin_ajuda.add_theme_constant_override("margin_top", 30)
+	margin_ajuda.add_theme_constant_override("margin_bottom", 30)
+	vbox_ajuda.add_child(margin_ajuda)
+	
+	var content_vbox_ajuda = VBoxContainer.new()
+	content_vbox_ajuda.add_theme_constant_override("separation", 15)
+	margin_ajuda.add_child(content_vbox_ajuda)
+	
+	# Carregar fonte
+	var font = load("res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf")
+	
+	# Título
+	var titulo_ajuda = Label.new()
+	titulo_ajuda.text = "📚 COMO RESOLVER"
+	titulo_ajuda.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	if font:
+		titulo_ajuda.add_theme_font_override("font", font)
+	titulo_ajuda.add_theme_font_size_override("font_size", 36)
+	titulo_ajuda.add_theme_color_override("font_color", Color(1.0, 0.9, 0.3, 1.0))
+	content_vbox_ajuda.add_child(titulo_ajuda)
+	
+	# Conteúdo da ajuda (será preenchido pelas classes filhas)
+	var ajuda_content = RichTextLabel.new()
+	ajuda_content.name = "AjudaContent"
+	ajuda_content.custom_minimum_size = Vector2(0, 400)
+	ajuda_content.bbcode_enabled = true
+	ajuda_content.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	if font:
+		ajuda_content.add_theme_font_override("normal_font", font)
+	ajuda_content.add_theme_font_size_override("normal_font_size", 22)
+	ajuda_content.add_theme_color_override("default_color", Color(1, 1, 1, 1))
+	content_vbox_ajuda.add_child(ajuda_content)
+	
+	# Botão para começar
+	var btn_comecar = Button.new()
+	btn_comecar.text = "COMEÇAR DESAFIO"
+	btn_comecar.custom_minimum_size = Vector2(300, 60)
+	if font:
+		btn_comecar.add_theme_font_override("font", font)
+	btn_comecar.add_theme_font_size_override("font_size", 28)
+	
+	# Estilizar botão
+	var btn_style = StyleBoxFlat.new()
+	btn_style.bg_color = Color(0.2, 0.6, 0.2, 1.0)
+	btn_style.border_color = Color(0.3, 0.8, 0.3, 1.0)
+	btn_style.set_border_width_all(3)
+	btn_style.set_corner_radius_all(10)
+	btn_comecar.add_theme_stylebox_override("normal", btn_style)
+	
+	var btn_style_hover = btn_style.duplicate()
+	btn_style_hover.bg_color = Color(0.3, 0.7, 0.3, 1.0)
+	btn_comecar.add_theme_stylebox_override("hover", btn_style_hover)
+	
+	btn_comecar.add_theme_color_override("font_color", Color.WHITE)
+	btn_comecar.pressed.connect(_fechar_ajuda_e_iniciar)
+	content_vbox_ajuda.add_child(btn_comecar)
+	
+	# Preencher conteúdo da ajuda (será sobrescrito pelas classes filhas)
+	_obter_conteudo_ajuda(ajuda_content)
+
+func _fechar_ajuda_e_iniciar() -> void:
+	if _painel_ajuda:
+		_painel_ajuda.queue_free()
+		_painel_ajuda = null
+	_ajuda_visivel = false
+	# Mostrar painel principal do desafio
+	if _painel_principal:
+		_painel_principal.visible = true
+	_iniciar_desafio()
+
+func _obter_conteudo_ajuda(ajuda_label: RichTextLabel) -> void:
+	# Esta função será sobrescrita pelas classes filhas
+	ajuda_label.text = "[center]Conteúdo de ajuda será definido pelas classes filhas[/center]"
 
 func _iniciar_desafio() -> void:
 	pergunta_atual = 0
