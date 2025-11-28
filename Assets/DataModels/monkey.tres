@@ -6,5 +6,5 @@
 script = ExtResource("1_yfbha")
 id_nome = "monkey"
 nome_exibicao = "Macaco"
-base_price = 150
+base_price = 120
 metadata/_custom_type_script = "uid://clifdba6nilqb"

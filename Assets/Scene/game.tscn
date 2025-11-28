@@ -1,33 +1,46 @@
-[gd_scene load_steps=20 format=3 uid="uid://cy3v4r672fdt5"]
+[gd_scene load_steps=58 format=3 uid="uid://cy3v4r672fdt5"]
 
 [ext_resource type="Texture2D" uid="uid://bxja5gm1qxh5l" path="res://Assets/Mapa/jaula_layout.png" id="2_q485k"]
+[ext_resource type="Texture2D" uid="uid://204q4b0ipq68" path="res://Assets/Sprites/Assests_Jogo/Mapa/Lampada.png" id="4_1iqjq"]
+[ext_resource type="Texture2D" uid="uid://4gfaorvmb46w" path="res://Assets/Sprites/Animais/Elefante/elefante_base.png" id="5_30n5v"]
+[ext_resource type="Texture2D" uid="uid://bojgcrtg7tcnn" path="res://Assets/Sprites/Animais/Leao/leao_base.png" id="6_m8p7e"]
+[ext_resource type="Texture2D" uid="uid://c264idfod0hc4" path="res://Assets/Sprites/Animais/Macaco/macaco_base.png" id="7_lkmxg"]
+[ext_resource type="Texture2D" uid="uid://n2xkv0ttxno8" path="res://Assets/Sprites/Animais/Girafa/girafa_base.png" id="8_x3gno"]
 [ext_resource type="PackedScene" uid="uid://uu4owmm80x58" path="res://Assets/Scene/Player.tscn" id="9_i4a30"]
+[ext_resource type="Texture2D" uid="uid://c0ywqloqb2l0d" path="res://Assets/Sprites/Animais/Zebra/zebra_base.png" id="9_m8p7e"]
+[ext_resource type="Texture2D" uid="uid://dxx8lljh2ddru" path="res://Assets/Sprites/Assests_Jogo/Arvores/Arvore 2GR.png" id="9_pki57"]
+[ext_resource type="Texture2D" uid="uid://bksdwe3twhbpw" path="res://Assets/Sprites/Assests_Jogo/Arvores/Arvore 3GR.png" id="10_ffe8m"]
+[ext_resource type="Texture2D" uid="uid://bjrs11aup3yju" path="res://Assets/Sprites/Assests_Jogo/Arbusto/Arbusto4.png" id="11_k1hjv"]
+[ext_resource type="Texture2D" uid="uid://b4upoblgey1hr" path="res://Assets/Sprites/Assests_Jogo/Arbusto/Arbusto3.png" id="12_l4b1a"]
+[ext_resource type="Texture2D" uid="uid://btl8kf1h5mn2i" path="res://Assets/Sprites/Assests_Jogo/Arbusto/Arbusto2.png" id="13_b2csh"]
+[ext_resource type="Texture2D" uid="uid://dnh0wdo3hgfpy" path="res://Assets/Sprites/Assests_Jogo/Arvores/Arvore 7GR.png" id="14_rcrgo"]
+[ext_resource type="Texture2D" uid="uid://clyquva2lnxrj" path="res://Assets/Sprites/Assests_Jogo/Arvores/Arvore 8GR.png" id="15_rhdb0"]
+[ext_resource type="Texture2D" uid="uid://ciju0mx2gka31" path="res://Assets/Sprites/Assests_Jogo/Chão/Lago3.png" id="16_ic2y5"]
+[ext_resource type="Texture2D" uid="uid://bq2yd0wg41hag" path="res://Assets/Sprites/Assests_Jogo/Jaula/Comedor_Bebedouro.png" id="17_a74im"]
 [ext_resource type="Texture2D" uid="uid://biwbqaakal53k" path="res://Assets/Sprites/Assests_Jogo/Mapa/Placa Grande.png" id="18_fsb1f"]
+[ext_resource type="Texture2D" uid="uid://oc1nan4c3886" path="res://Assets/Sprites/Assests_Jogo/Jaula/BebedouroPQ2.png" id="18_l4b1a"]
+[ext_resource type="Texture2D" uid="uid://dyp7743pit2iy" path="res://Assets/Sprites/Assests_Jogo/Arbusto/Arbusto1.png" id="18_rhdb0"]
+[ext_resource type="Texture2D" uid="uid://cafwbosra06fv" path="res://Assets/Sprites/Assests_Jogo/Mapa/Nuvem1.png" id="18_t7rqy"]
+[ext_resource type="Texture2D" uid="uid://esoyl05htx7r" path="res://Assets/Sprites/Assests_Jogo/Mapa/Nuvem2.png" id="19_30n5v"]
+[ext_resource type="Texture2D" uid="uid://ctp0muxscyge" path="res://Assets/Sprites/Assests_Jogo/Jaula/Comedouro.png" id="19_b2csh"]
 [ext_resource type="Script" uid="uid://3i73yfxkb2x8" path="res://Assets/Scripts/game.gd" id="20_game"]
+[ext_resource type="Texture2D" uid="uid://bwybbuh0fw8th" path="res://Assets/Sprites/Assests_Jogo/Mapa/Nuvem3.png" id="20_m8p7e"]
+[ext_resource type="Texture2D" uid="uid://b644ybmo0ag12" path="res://Assets/Sprites/Assests_Jogo/Arvores/Arvore 9GR.png" id="20_rcrgo"]
 [ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="21_font"]
+[ext_resource type="Texture2D" uid="uid://68jbphqwtxje" path="res://Assets/Sprites/Assests_Jogo/Mapa/Nuvem6.png" id="21_lkmxg"]
+[ext_resource type="Texture2D" uid="uid://dc3ayssexlyv2" path="res://Assets/Sprites/Assests_Jogo/Arbusto/Arbusto6.png" id="21_rhdb0"]
 [ext_resource type="Theme" uid="uid://cwjaoo03ur0mh" path="res://Assets/Botoes/default_btn.tres" id="22_theme"]
+[ext_resource type="Texture2D" uid="uid://cxdqqj8l2a5ht" path="res://Assets/Sprites/Assests_Jogo/Mapa/Nuvem5.png" id="22_x3gno"]
+[ext_resource type="Texture2D" uid="uid://c148t8iexsp36" path="res://Assets/Sprites/Assests_Jogo/Mapa/Moveis.png" id="23_otxir"]
 [ext_resource type="Script" uid="uid://d0wb01cumpt5q" path="res://Assets/Scripts/placa_interacao.gd" id="23_placa"]
+[ext_resource type="Texture2D" uid="uid://cfbfvje2gte1i" path="res://Assets/Sprites/Assests_Jogo/Arbusto/Cactus2.png" id="28_rcrgo"]
+[ext_resource type="Texture2D" uid="uid://dwe4u4nyvmlep" path="res://Assets/Sprites/Assests_Jogo/Jaula/BebedouroGR.png" id="29_rhdb0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i6p2"]
 size = Vector2(10230, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_barreira"]
 size = Vector2(50, 2000)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_elefante"]
-size = Vector2(1745, 475)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_leao"]
-size = Vector2(1745, 475)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_macaco"]
-size = Vector2(1745, 475)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_girafa"]
-size = Vector2(1745, 475)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_zebra"]
-size = Vector2(1750.5, 464.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_placa_elefante"]
 size = Vector2(200, 150)
@@ -43,6 +56,51 @@ size = Vector2(200, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_placa_zebra"]
 size = Vector2(200, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arvore2gr"]
+size = Vector2(124, 190.4036)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arvore3gr"]
+size = Vector2(112.40918, 178.61513)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arbusto4"]
+size = Vector2(49.35346, 58.502167)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arbusto3"]
+size = Vector2(55.5, 44.18344)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arvore7gr"]
+size = Vector2(147, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arvore8gr"]
+size = Vector2(132, 193.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lago3"]
+size = Vector2(93.326416, 87.02361)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_comedor_bebedouro"]
+size = Vector2(95.5, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arbusto1"]
+size = Vector2(63.63629, 52.274216)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bebedouro_pq2"]
+size = Vector2(35.34485, 36.94594)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_comedouro"]
+size = Vector2(72.08887, 68.4931)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arvore9gr"]
+size = Vector2(137.5, 186.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arbusto6"]
+size = Vector2(32.29016, 45.68187)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cactus2"]
+size = Vector2(38.206787, 53.83484)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bebedouro_gr"]
+size = Vector2(32.854065, 28.560577)
 
 [node name="game" type="Node2D" node_paths=PackedStringArray("_hud", "_shop_button", "_player", "_moedas_label")]
 script = ExtResource("20_game")
@@ -76,8 +134,8 @@ scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
 [node name="PlacaElefante" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Elefante"]
-position = Vector2(250.24542, 249.25)
-scale = Vector2(1.4923377, 2.570312)
+position = Vector2(239.76138, 290.125)
+scale = Vector2(1.2486396, 1.816406)
 texture = ExtResource("18_fsb1f")
 
 [node name="Jaula Leao" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
@@ -86,8 +144,8 @@ scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
 [node name="PlacaLeao" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Leao"]
-position = Vector2(250.24542, 249.25)
-scale = Vector2(1.4923377, 2.570312)
+position = Vector2(243.68063, 299.625)
+scale = Vector2(1.3491333, 1.5820307)
 texture = ExtResource("18_fsb1f")
 
 [node name="Jaula Macaco" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
@@ -96,8 +154,8 @@ scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
 [node name="PlacaMacaco" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Macaco"]
-position = Vector2(250.24542, 249.25)
-scale = Vector2(1.4923377, 2.570312)
+position = Vector2(245.64021, 300.625)
+scale = Vector2(1.3792801, 1.550781)
 texture = ExtResource("18_fsb1f")
 
 [node name="Jaula Girafa" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
@@ -106,8 +164,8 @@ scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
 [node name="PlacaGirafa" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Girafa"]
-position = Vector2(250.24542, 249.25)
-scale = Vector2(1.4923377, 2.570312)
+position = Vector2(250.73587, 303.125)
+scale = Vector2(1.4898294, 1.5039059)
 texture = ExtResource("18_fsb1f")
 
 [node name="Jaula Zebra" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
@@ -116,67 +174,311 @@ scale = Vector2(1.2757475, 1)
 texture = ExtResource("2_q485k")
 
 [node name="PlacaZebra" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Jaula Zebra"]
-position = Vector2(250.24542, 249.25)
-scale = Vector2(1.4923377, 2.570312)
+position = Vector2(250.34358, 302.625)
+scale = Vector2(1.4395831, 1.550781)
 texture = ExtResource("18_fsb1f")
 
-[node name="CharacterBody2D2" parent="." instance=ExtResource("9_i4a30")]
+[node name="Posicao dos Elefante" type="Node2D" parent="."]
 
-[node name="AreasInteracao" type="Node2D" parent="."]
+[node name="ElefanteBase" type="Sprite2D" parent="Posicao dos Elefante"]
+position = Vector2(1241, 651)
+scale = Vector2(1.3, 1.1666666)
+texture = ExtResource("5_30n5v")
 
-[node name="AreaElefante" type="Area2D" parent="AreasInteracao"]
-position = Vector2(967, 533)
-script = ExtResource("23_placa")
-nome_jaula = "Jaula do Elefante - Adição e Subtração"
+[node name="ElefanteBase2" type="Sprite2D" parent="Posicao dos Elefante"]
+visible = false
+position = Vector2(334, 665)
+scale = Vector2(1.3, 1.1666666)
+texture = ExtResource("5_30n5v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaElefante"]
-position = Vector2(34, -23)
-shape = SubResource("RectangleShape2D_elefante")
-debug_color = Color(0, 1, 0, 0.3)
+[node name="ElefanteBase3" type="Sprite2D" parent="Posicao dos Elefante"]
+visible = false
+position = Vector2(1032, 364.00006)
+scale = Vector2(1.3, 1.1666666)
+texture = ExtResource("5_30n5v")
 
-[node name="AreaLeao" type="Area2D" parent="AreasInteracao"]
-position = Vector2(2887, 533)
-script = ExtResource("23_placa")
-tipo_desafio = "leao"
-nome_jaula = "Jaula do Leão - Multiplicação"
+[node name="ElefanteBase4" type="Sprite2D" parent="Posicao dos Elefante"]
+position = Vector2(613.0001, 364.00003)
+scale = Vector2(1.3, 1.1666666)
+texture = ExtResource("5_30n5v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaLeao"]
-position = Vector2(37, -11)
-shape = SubResource("RectangleShape2D_leao")
-debug_color = Color(1, 0.5, 0, 0.3)
+[node name="ElefanteBase5" type="Sprite2D" parent="Posicao dos Elefante"]
+position = Vector2(1578.0001, 544)
+scale = Vector2(1.3, 1.1666666)
+texture = ExtResource("5_30n5v")
 
-[node name="AreaMacaco" type="Area2D" parent="AreasInteracao"]
-position = Vector2(4804, 533)
-script = ExtResource("23_placa")
-tipo_desafio = "macaco"
-nome_jaula = "Jaula do Macaco - Divisão"
+[node name="ElefanteBase6" type="Sprite2D" parent="Posicao dos Elefante"]
+position = Vector2(929.0001, 559)
+scale = Vector2(1.3, 1.1666666)
+texture = ExtResource("5_30n5v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaMacaco"]
-position = Vector2(31, -6)
-shape = SubResource("RectangleShape2D_macaco")
-debug_color = Color(0.6, 0.3, 0, 0.3)
+[node name="ElefanteBase7" type="Sprite2D" parent="Posicao dos Elefante"]
+position = Vector2(1739.0001, 375.00003)
+scale = Vector2(1.3, 1.1666666)
+texture = ExtResource("5_30n5v")
 
-[node name="AreaGirafa" type="Area2D" parent="AreasInteracao"]
-position = Vector2(6724, 533)
-script = ExtResource("23_placa")
-tipo_desafio = "girafa"
-nome_jaula = "Jaula da Girafa - Regra de Três Simples"
+[node name="ElefanteBase8" type="Sprite2D" parent="Posicao dos Elefante"]
+position = Vector2(1367.0001, 351.00003)
+scale = Vector2(1.3, 1.1666666)
+texture = ExtResource("5_30n5v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaGirafa"]
-position = Vector2(31, -14)
-shape = SubResource("RectangleShape2D_girafa")
-debug_color = Color(1, 1, 0, 0.3)
+[node name="ElefanteBase9" type="Sprite2D" parent="Posicao dos Elefante"]
+position = Vector2(240.00012, 462.00003)
+scale = Vector2(1.3, 1.1666666)
+texture = ExtResource("5_30n5v")
 
-[node name="AreaZebra" type="Area2D" parent="AreasInteracao"]
-position = Vector2(8644, 533)
-script = ExtResource("23_placa")
-tipo_desafio = "zebra"
-nome_jaula = "Jaula da Zebra - Regra de Três Composta"
+[node name="ElefanteBase10" type="Sprite2D" parent="Posicao dos Elefante"]
+position = Vector2(631.0001, 657)
+scale = Vector2(1.3, 1.1666666)
+texture = ExtResource("5_30n5v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaZebra"]
-position = Vector2(31.75, -14.25)
-shape = SubResource("RectangleShape2D_zebra")
-debug_color = Color(0, 0, 0, 0.3)
+[node name="Posicao dos Leao" type="Node2D" parent="."]
+
+[node name="LeaoBase" type="Sprite2D" parent="Posicao dos Leao"]
+visible = false
+position = Vector2(2326.9998, 353.00003)
+scale = Vector2(1.3369565, 1.3295455)
+texture = ExtResource("6_m8p7e")
+
+[node name="LeaoBase2" type="Sprite2D" parent="Posicao dos Leao"]
+visible = false
+position = Vector2(2139, 538)
+scale = Vector2(1.3369565, 1.3295455)
+texture = ExtResource("6_m8p7e")
+
+[node name="LeaoBase3" type="Sprite2D" parent="Posicao dos Leao"]
+visible = false
+position = Vector2(2631, 665)
+scale = Vector2(1.3369565, 1.3295455)
+texture = ExtResource("6_m8p7e")
+
+[node name="LeaoBase4" type="Sprite2D" parent="Posicao dos Leao"]
+visible = false
+position = Vector2(2809, 464.00003)
+scale = Vector2(1.3369565, 1.3295455)
+texture = ExtResource("6_m8p7e")
+
+[node name="LeaoBase5" type="Sprite2D" parent="Posicao dos Leao"]
+visible = false
+position = Vector2(3032.9998, 625)
+scale = Vector2(1.3369565, 1.3295455)
+texture = ExtResource("6_m8p7e")
+
+[node name="LeaoBase6" type="Sprite2D" parent="Posicao dos Leao"]
+visible = false
+position = Vector2(3581.9998, 673)
+scale = Vector2(1.3369565, 1.3295455)
+texture = ExtResource("6_m8p7e")
+
+[node name="LeaoBase7" type="Sprite2D" parent="Posicao dos Leao"]
+visible = false
+position = Vector2(3281.9998, 406.00003)
+scale = Vector2(1.3369565, 1.3295455)
+texture = ExtResource("6_m8p7e")
+
+[node name="LeaoBase8" type="Sprite2D" parent="Posicao dos Leao"]
+visible = false
+position = Vector2(3672, 374.00003)
+scale = Vector2(1.3369565, 1.3295455)
+texture = ExtResource("6_m8p7e")
+
+[node name="LeaoBase9" type="Sprite2D" parent="Posicao dos Leao"]
+visible = false
+position = Vector2(2331.9998, 509.00003)
+scale = Vector2(1.3369565, 1.3295455)
+texture = ExtResource("6_m8p7e")
+
+[node name="LeaoBase10" type="Sprite2D" parent="Posicao dos Leao"]
+visible = false
+position = Vector2(3375.9998, 574)
+scale = Vector2(1.3369565, 1.3295455)
+texture = ExtResource("6_m8p7e")
+
+[node name="Posicao dos Macaco" type="Node2D" parent="."]
+
+[node name="MacacoBase" type="Sprite2D" parent="Posicao dos Macaco"]
+visible = false
+position = Vector2(5024, 372.00006)
+scale = Vector2(1.1057693, 1.3365384)
+texture = ExtResource("7_lkmxg")
+
+[node name="MacacoBase2" type="Sprite2D" parent="Posicao dos Macaco"]
+visible = false
+position = Vector2(4507, 579)
+scale = Vector2(1.1057693, 1.3365384)
+texture = ExtResource("7_lkmxg")
+
+[node name="MacacoBase3" type="Sprite2D" parent="Posicao dos Macaco"]
+visible = false
+position = Vector2(5292, 559.00006)
+scale = Vector2(1.1057693, 1.3365384)
+texture = ExtResource("7_lkmxg")
+
+[node name="MacacoBase4" type="Sprite2D" parent="Posicao dos Macaco"]
+visible = false
+position = Vector2(4441, 364.00006)
+scale = Vector2(1.1057693, 1.3365384)
+texture = ExtResource("7_lkmxg")
+
+[node name="MacacoBase5" type="Sprite2D" parent="Posicao dos Macaco"]
+visible = false
+position = Vector2(5623, 654.00006)
+scale = Vector2(1.1057693, 1.3365384)
+texture = ExtResource("7_lkmxg")
+
+[node name="MacacoBase6" type="Sprite2D" parent="Posicao dos Macaco"]
+visible = false
+position = Vector2(5020, 554.00006)
+scale = Vector2(1.1057693, 1.3365384)
+texture = ExtResource("7_lkmxg")
+
+[node name="MacacoBase7" type="Sprite2D" parent="Posicao dos Macaco"]
+visible = false
+position = Vector2(4735, 450)
+scale = Vector2(1.1057693, 1.3365384)
+texture = ExtResource("7_lkmxg")
+
+[node name="MacacoBase8" type="Sprite2D" parent="Posicao dos Macaco"]
+visible = false
+position = Vector2(4184, 669.00006)
+scale = Vector2(1.1057693, 1.3365384)
+texture = ExtResource("7_lkmxg")
+
+[node name="MacacoBase9" type="Sprite2D" parent="Posicao dos Macaco"]
+visible = false
+position = Vector2(4054, 376.00006)
+scale = Vector2(1.1057693, 1.3365384)
+texture = ExtResource("7_lkmxg")
+
+[node name="MacacoBase10" type="Sprite2D" parent="Posicao dos Macaco"]
+visible = false
+position = Vector2(5484, 376.00006)
+scale = Vector2(1.1057693, 1.3365384)
+texture = ExtResource("7_lkmxg")
+
+[node name="Posicao das Girafa" type="Node2D" parent="."]
+
+[node name="GirafaBase" type="Sprite2D" parent="Posicao das Girafa"]
+visible = false
+position = Vector2(7447, 431)
+scale = Vector2(1.0294139, 1.3586959)
+texture = ExtResource("8_x3gno")
+
+[node name="GirafaBase2" type="Sprite2D" parent="Posicao das Girafa"]
+visible = false
+position = Vector2(6249, 481)
+scale = Vector2(1.0294139, 1.3586959)
+texture = ExtResource("8_x3gno")
+
+[node name="GirafaBase3" type="Sprite2D" parent="Posicao das Girafa"]
+visible = false
+position = Vector2(5999, 650)
+scale = Vector2(1.0294139, 1.3586959)
+texture = ExtResource("8_x3gno")
+
+[node name="GirafaBase4" type="Sprite2D" parent="Posicao das Girafa"]
+visible = false
+position = Vector2(6096, 397)
+scale = Vector2(1.0294139, 1.3586959)
+texture = ExtResource("8_x3gno")
+
+[node name="GirafaBase5" type="Sprite2D" parent="Posicao das Girafa"]
+visible = false
+position = Vector2(6395, 441)
+scale = Vector2(1.0294139, 1.3586959)
+texture = ExtResource("8_x3gno")
+
+[node name="GirafaBase6" type="Sprite2D" parent="Posicao das Girafa"]
+visible = false
+position = Vector2(6492, 655)
+scale = Vector2(1.0294139, 1.3586959)
+texture = ExtResource("8_x3gno")
+
+[node name="GirafaBase7" type="Sprite2D" parent="Posicao das Girafa"]
+visible = false
+position = Vector2(6671, 430)
+scale = Vector2(1.0294139, 1.3586959)
+texture = ExtResource("8_x3gno")
+
+[node name="GirafaBase8" type="Sprite2D" parent="Posicao das Girafa"]
+visible = false
+position = Vector2(6996, 618)
+scale = Vector2(1.0294139, 1.3586959)
+texture = ExtResource("8_x3gno")
+
+[node name="GirafaBase9" type="Sprite2D" parent="Posicao das Girafa"]
+visible = false
+position = Vector2(7229, 471)
+scale = Vector2(1.0294139, 1.3586959)
+texture = ExtResource("8_x3gno")
+
+[node name="GirafaBase10" type="Sprite2D" parent="Posicao das Girafa"]
+visible = false
+position = Vector2(7559.0005, 627)
+scale = Vector2(1.0294139, 1.3586959)
+texture = ExtResource("8_x3gno")
+
+[node name="Posicao das Zebra" type="Node2D" parent="."]
+
+[node name="ZebraBase" type="Sprite2D" parent="Posicao das Zebra"]
+visible = false
+position = Vector2(7970, 396.00003)
+scale = Vector2(1.1583333, 1.2719299)
+texture = ExtResource("9_m8p7e")
+
+[node name="ZebraBase2" type="Sprite2D" parent="Posicao das Zebra"]
+visible = false
+position = Vector2(8944, 547)
+scale = Vector2(1.1583333, 1.2719299)
+texture = ExtResource("9_m8p7e")
+
+[node name="ZebraBase3" type="Sprite2D" parent="Posicao das Zebra"]
+visible = false
+position = Vector2(8580, 380.00003)
+scale = Vector2(1.1583333, 1.2719299)
+texture = ExtResource("9_m8p7e")
+
+[node name="ZebraBase4" type="Sprite2D" parent="Posicao das Zebra"]
+visible = false
+position = Vector2(8218, 666)
+scale = Vector2(1.1583333, 1.2719299)
+texture = ExtResource("9_m8p7e")
+
+[node name="ZebraBase5" type="Sprite2D" parent="Posicao das Zebra"]
+visible = false
+position = Vector2(7870, 679)
+scale = Vector2(1.1583333, 1.2719299)
+texture = ExtResource("9_m8p7e")
+
+[node name="ZebraBase6" type="Sprite2D" parent="Posicao das Zebra"]
+visible = false
+position = Vector2(8232, 357.00003)
+scale = Vector2(1.1583333, 1.2719299)
+texture = ExtResource("9_m8p7e")
+
+[node name="ZebraBase7" type="Sprite2D" parent="Posicao das Zebra"]
+visible = false
+position = Vector2(8628, 665)
+scale = Vector2(1.1583333, 1.2719299)
+texture = ExtResource("9_m8p7e")
+
+[node name="ZebraBase8" type="Sprite2D" parent="Posicao das Zebra"]
+visible = false
+position = Vector2(9060, 367.00003)
+scale = Vector2(1.1583333, 1.2719299)
+texture = ExtResource("9_m8p7e")
+
+[node name="ZebraBase9" type="Sprite2D" parent="Posicao das Zebra"]
+visible = false
+position = Vector2(9210, 678)
+scale = Vector2(1.1583333, 1.2719299)
+texture = ExtResource("9_m8p7e")
+
+[node name="ZebraBase10" type="Sprite2D" parent="Posicao das Zebra"]
+visible = false
+position = Vector2(9479, 592)
+scale = Vector2(1.1583333, 1.2719299)
+texture = ExtResource("9_m8p7e")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 offset_right = 40.0
@@ -233,6 +535,767 @@ nome_jaula = "Jaula da Zebra - Regra de Três Composta"
 shape = SubResource("RectangleShape2D_placa_zebra")
 debug_color = Color(0.5, 0.5, 0.5, 0.5)
 
+[node name="Assests Elefante" type="Node2D" parent="."]
+position = Vector2(1001, 510)
+
+[node name="Arvore2gr" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(-768, -238)
+texture = ExtResource("9_pki57")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arvore2gr"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arvore2gr/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore2gr")
+
+[node name="Arvore2gr2" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(601, -176)
+texture = ExtResource("9_pki57")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arvore2gr2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arvore2gr2/AreaAsset"]
+position = Vector2(-13, 0)
+shape = SubResource("RectangleShape2D_arvore2gr")
+
+[node name="Arvore2gr3" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(-517, 119)
+texture = ExtResource("9_pki57")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arvore2gr3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arvore2gr3/AreaAsset"]
+position = Vector2(-9, 0)
+shape = SubResource("RectangleShape2D_arvore2gr")
+
+[node name="Arvore3gr" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(358, -10)
+texture = ExtResource("10_ffe8m")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arvore3gr"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arvore3gr/AreaAsset"]
+position = Vector2(-1, -0.875)
+shape = SubResource("RectangleShape2D_arvore3gr")
+
+[node name="Arbusto4" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(-600.5, -153.875)
+scale = Vector2(1.7399999, 1.3537738)
+texture = ExtResource("11_k1hjv")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arbusto4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arbusto4/AreaAsset"]
+position = Vector2(-1.4008484, -2.7510986)
+shape = SubResource("RectangleShape2D_arbusto4")
+
+[node name="Arbusto5" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(-768, 109)
+scale = Vector2(1.4, 1.5754716)
+texture = ExtResource("11_k1hjv")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arbusto5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arbusto5/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto4")
+
+[node name="Arbusto6" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(-115, -153)
+texture = ExtResource("11_k1hjv")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arbusto6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arbusto6/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto4")
+
+[node name="Arbusto3" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(543, 151)
+scale = Vector2(1.5, 1.3367347)
+texture = ExtResource("12_l4b1a")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arbusto3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arbusto3/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto3")
+
+[node name="Arbusto7" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(-241.25, 78.25)
+scale = Vector2(1.5, 1.4183674)
+texture = ExtResource("12_l4b1a")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arbusto7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arbusto7/AreaAsset"]
+position = Vector2(0.83333206, 0.52877235)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_arbusto3")
+
+[node name="Arbusto8" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(751.75, -3.25)
+scale = Vector2(1.5, 1.2346939)
+texture = ExtResource("12_l4b1a")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arbusto8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arbusto8/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto3")
+
+[node name="Arbusto2" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(228, -86.99997)
+scale = Vector2(1.875, 1.5222223)
+texture = ExtResource("13_b2csh")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arbusto2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arbusto2/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto3")
+
+[node name="Arbusto9" type="Sprite2D" parent="Assests Elefante"]
+position = Vector2(71, 161)
+scale = Vector2(2.09375, 1.5888889)
+texture = ExtResource("13_b2csh")
+
+[node name="AreaAsset" type="Area2D" parent="Assests Elefante/Arbusto9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assests Elefante/Arbusto9/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto3")
+
+[node name="Assets Leao" type="Node2D" parent="."]
+
+[node name="Arvore7gr" type="Sprite2D" parent="Assets Leao"]
+position = Vector2(2173, 357)
+texture = ExtResource("14_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Leao/Arvore7gr"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Leao/Arvore7gr/AreaAsset"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_arvore7gr")
+
+[node name="Arvore8gr" type="Sprite2D" parent="Assets Leao"]
+position = Vector2(3453, 362)
+texture = ExtResource("15_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Leao/Arvore8gr"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Leao/Arvore8gr/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore8gr")
+
+[node name="Arvore8gr2" type="Sprite2D" parent="Assets Leao"]
+position = Vector2(2488, 583)
+texture = ExtResource("15_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Leao/Arvore8gr2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Leao/Arvore8gr2/AreaAsset"]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_arvore8gr")
+
+[node name="Arvore8gr3" type="Sprite2D" parent="Assets Leao"]
+position = Vector2(3217, 598)
+texture = ExtResource("15_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Leao/Arvore8gr3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Leao/Arvore8gr3/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore8gr")
+
+[node name="Arvore8gr4" type="Sprite2D" parent="Assets Leao"]
+position = Vector2(2910, 306)
+texture = ExtResource("15_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Leao/Arvore8gr4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Leao/Arvore8gr4/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore8gr")
+
+[node name="Lago3" type="Sprite2D" parent="Assets Leao"]
+position = Vector2(3706.0002, 535)
+scale = Vector2(1.7195122, 1.7261904)
+texture = ExtResource("16_ic2y5")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Leao/Lago3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Leao/Lago3/AreaAsset"]
+position = Vector2(1.1630497, -1.7379246)
+scale = Vector2(0.9999998, 0.9999997)
+shape = SubResource("RectangleShape2D_lago3")
+
+[node name="ComedorBebedouro" type="Sprite2D" parent="Assets Leao"]
+position = Vector2(2494, 263)
+texture = ExtResource("17_a74im")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Leao/ComedorBebedouro"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Leao/ComedorBebedouro/AreaAsset"]
+position = Vector2(-2.75, 0)
+shape = SubResource("RectangleShape2D_comedor_bebedouro")
+
+[node name="Arbusto1" type="Sprite2D" parent="Assets Leao"]
+position = Vector2(2828.5, 597)
+scale = Vector2(1.54, 1.3478261)
+texture = ExtResource("18_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Leao/Arbusto1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Leao/Arbusto1/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto1")
+
+[node name="Arbusto2" type="Sprite2D" parent="Assets Leao"]
+position = Vector2(2252.0002, 652)
+scale = Vector2(1.54, 1.3478261)
+texture = ExtResource("18_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Leao/Arbusto2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Leao/Arbusto2/AreaAsset"]
+position = Vector2(-1.947998, -2.395172)
+shape = SubResource("RectangleShape2D_arbusto1")
+
+[node name="Arbusto3" type="Sprite2D" parent="Assets Leao"]
+position = Vector2(3156, 395)
+scale = Vector2(1.54, 1.3478261)
+texture = ExtResource("18_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Leao/Arbusto3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Leao/Arbusto3/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto1")
+
+[node name="Arbusto4" type="Sprite2D" parent="Assets Leao"]
+position = Vector2(2620, 403)
+scale = Vector2(1.54, 1.3478261)
+texture = ExtResource("18_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Leao/Arbusto4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Leao/Arbusto4/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto1")
+
+[node name="Assets Macaco" type="Node2D" parent="."]
+
+[node name="BebedouroPq2" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(5660, 326)
+scale = Vector2(2.9, 2.1764705)
+texture = ExtResource("18_l4b1a")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/BebedouroPq2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/BebedouroPq2/AreaAsset"]
+position = Vector2(-2.1551514, 0.36486816)
+shape = SubResource("RectangleShape2D_bebedouro_pq2")
+
+[node name="Comedouro" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(4013, 712.5)
+scale = Vector2(1.40625, 1.140625)
+texture = ExtResource("19_b2csh")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Comedouro"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Comedouro/AreaAsset"]
+position = Vector2(1.4222126, -1.3150616)
+scale = Vector2(1, 1.0000001)
+shape = SubResource("RectangleShape2D_comedouro")
+
+[node name="Arvore9gr" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(4294, 396)
+texture = ExtResource("20_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Arvore9gr"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Arvore9gr/AreaAsset"]
+position = Vector2(-6, 3)
+shape = SubResource("RectangleShape2D_arvore9gr")
+
+[node name="Arvore9gr2" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(4766, 641)
+texture = ExtResource("20_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Arvore9gr2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Arvore9gr2/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore9gr")
+
+[node name="Arvore9gr3" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(5186, 382)
+texture = ExtResource("20_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Arvore9gr3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Arvore9gr3/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore9gr")
+
+[node name="Arvore9gr4" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(5483, 620)
+texture = ExtResource("20_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Arvore9gr4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Arvore9gr4/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore9gr")
+
+[node name="Arbusto6" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(4120, 566.99994)
+scale = Vector2(2.2142785, 1.6499993)
+texture = ExtResource("21_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Arbusto6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Arbusto6/AreaAsset"]
+position = Vector2(0.45160294, -3.636322)
+shape = SubResource("RectangleShape2D_arbusto6")
+
+[node name="Arbusto7" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(4551, 434.99994)
+scale = Vector2(2.2142785, 1.6499993)
+texture = ExtResource("21_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Arbusto7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Arbusto7/AreaAsset"]
+position = Vector2(3.361702e-05, 0.6061022)
+shape = SubResource("RectangleShape2D_arbusto6")
+
+[node name="Arbusto8" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(4867, 670.99994)
+scale = Vector2(2.2142785, 1.6499993)
+texture = ExtResource("21_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Arbusto8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Arbusto8/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto6")
+
+[node name="Arbusto9" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(4907, 377.99994)
+scale = Vector2(2.2142785, 1.6499993)
+texture = ExtResource("21_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Arbusto9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Arbusto9/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto6")
+
+[node name="Arbusto4" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(4342, 638.75)
+scale = Vector2(1.48, 1.1792452)
+texture = ExtResource("11_k1hjv")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Arbusto4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Arbusto4/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto4")
+
+[node name="Arbusto5" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(5189.0005, 669)
+scale = Vector2(1.48, 1.1792452)
+texture = ExtResource("11_k1hjv")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Arbusto5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Arbusto5/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto4")
+
+[node name="Arbusto10" type="Sprite2D" parent="Assets Macaco"]
+position = Vector2(5375.0005, 448)
+scale = Vector2(1.48, 1.1792452)
+texture = ExtResource("11_k1hjv")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Macaco/Arbusto10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Macaco/Arbusto10/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto4")
+
+[node name="Assets Girafa" type="Node2D" parent="."]
+
+[node name="Cactus2" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(5958, 665)
+scale = Vector2(1.7058823, 2.2708333)
+texture = ExtResource("28_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Cactus2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Cactus2/AreaAsset"]
+position = Vector2(-1.7587128, -1.7614784)
+shape = SubResource("RectangleShape2D_cactus2")
+
+[node name="Cactus3" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(6187, 382)
+scale = Vector2(1.7058823, 2.2708333)
+texture = ExtResource("28_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Cactus3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Cactus3/AreaAsset"]
+shape = SubResource("RectangleShape2D_cactus2")
+
+[node name="Cactus4" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(6552, 651)
+scale = Vector2(1.7058823, 2.2708333)
+texture = ExtResource("28_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Cactus4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Cactus4/AreaAsset"]
+shape = SubResource("RectangleShape2D_cactus2")
+
+[node name="Cactus5" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(6828, 438)
+scale = Vector2(1.7058823, 2.2708333)
+texture = ExtResource("28_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Cactus5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Cactus5/AreaAsset"]
+shape = SubResource("RectangleShape2D_cactus2")
+
+[node name="Cactus6" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(7144, 620)
+scale = Vector2(1.7058823, 2.2708333)
+texture = ExtResource("28_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Cactus6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Cactus6/AreaAsset"]
+shape = SubResource("RectangleShape2D_cactus2")
+
+[node name="Arvore2gr" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(6021.9995, 409.00006)
+scale = Vector2(1.0038168, 1.1614584)
+texture = ExtResource("9_pki57")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Arvore2gr"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Arvore2gr/AreaAsset"]
+position = Vector2(-8.965332, 1.354187)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_arvore2gr")
+
+[node name="Arvore2gr2" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(7106, 424)
+scale = Vector2(1.0038168, 1.1614584)
+texture = ExtResource("9_pki57")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Arvore2gr2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Arvore2gr2/AreaAsset"]
+position = Vector2(-6.9733834, -1.721973)
+shape = SubResource("RectangleShape2D_arvore2gr")
+
+[node name="Arvore2gr3" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(7410.9995, 609.00006)
+scale = Vector2(1.0038168, 1.1614584)
+texture = ExtResource("9_pki57")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Arvore2gr3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Arvore2gr3/AreaAsset"]
+position = Vector2(-8.965292, -1.7220255)
+shape = SubResource("RectangleShape2D_arvore2gr")
+
+[node name="Arvore3gr" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(6286, 653)
+texture = ExtResource("10_ffe8m")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Arvore3gr"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Arvore3gr/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore3gr")
+
+[node name="Arvore3gr2" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(6486, 401)
+texture = ExtResource("10_ffe8m")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Arvore3gr2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Arvore3gr2/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore3gr")
+
+[node name="BebedouroGr" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(6850.5, 731.75)
+scale = Vector2(4.4722223, 2.1086957)
+texture = ExtResource("29_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/BebedouroGr"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/BebedouroGr/AreaAsset"]
+position = Vector2(-1.6770056, -2.252585)
+shape = SubResource("RectangleShape2D_bebedouro_gr")
+
+[node name="Comedouro" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(7580, 329)
+scale = Vector2(1.4375, 1.40625)
+texture = ExtResource("19_b2csh")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Comedouro"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Comedouro/AreaAsset"]
+shape = SubResource("RectangleShape2D_comedouro")
+
+[node name="Arbusto3" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(6885.75, 570.25)
+scale = Vector2(1.6538461, 1.3775511)
+texture = ExtResource("12_l4b1a")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Arbusto3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Arbusto3/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto3")
+
+[node name="Arbusto4" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(6321.9995, 384.00006)
+scale = Vector2(1.6538461, 1.3775511)
+texture = ExtResource("12_l4b1a")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Arbusto4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Arbusto4/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto3")
+
+[node name="Arbusto5" type="Sprite2D" parent="Assets Girafa"]
+position = Vector2(7281.9995, 398.00006)
+scale = Vector2(1.6538461, 1.3775511)
+texture = ExtResource("12_l4b1a")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Girafa/Arbusto5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Girafa/Arbusto5/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto3")
+
+[node name="Assets Zebra" type="Node2D" parent="."]
+
+[node name="Arvore9gr" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(7892, 281)
+scale = Vector2(1.112069, 1.1354166)
+texture = ExtResource("20_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Arvore9gr"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Arvore9gr/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore9gr")
+
+[node name="Arvore9gr2" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(8057.9995, 559)
+scale = Vector2(1.112069, 1.1354166)
+texture = ExtResource("20_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Arvore9gr2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Arvore9gr2/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore9gr")
+
+[node name="Arvore9gr3" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(8429, 354)
+scale = Vector2(1.112069, 1.1354166)
+texture = ExtResource("20_rcrgo")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Arvore9gr3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Arvore9gr3/AreaAsset"]
+shape = SubResource("RectangleShape2D_arvore9gr")
+
+[node name="Arvore3gr" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(9211.25, 507)
+scale = Vector2(1.2113402, 1.1875)
+texture = ExtResource("10_ffe8m")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Arvore3gr"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Arvore3gr/AreaAsset"]
+position = Vector2(0, -4.166046)
+scale = Vector2(1, 1.0000001)
+shape = SubResource("RectangleShape2D_arvore3gr")
+
+[node name="Arvore3gr2" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(8757, 567)
+scale = Vector2(1.2113402, 1.1875)
+texture = ExtResource("10_ffe8m")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Arvore3gr2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Arvore3gr2/AreaAsset"]
+position = Vector2(-2.5454102, -5.983551)
+scale = Vector2(1, 1.0000001)
+shape = SubResource("RectangleShape2D_arvore3gr")
+
+[node name="Arbusto6" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(8304.25, 623.5)
+scale = Vector2(1.3571428, 1.525)
+texture = ExtResource("21_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Arbusto6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Arbusto6/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto6")
+
+[node name="Arbusto7" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(8745, 382)
+scale = Vector2(1.3571428, 1.525)
+texture = ExtResource("21_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Arbusto7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Arbusto7/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto6")
+
+[node name="Arbusto8" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(9394, 704)
+scale = Vector2(1.3571428, 1.525)
+texture = ExtResource("21_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Arbusto8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Arbusto8/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto6")
+
+[node name="Arbusto9" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(9407, 382)
+scale = Vector2(1.3571428, 1.525)
+texture = ExtResource("21_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Arbusto9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Arbusto9/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto6")
+
+[node name="Arbusto10" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(8118, 362)
+scale = Vector2(1.3571428, 1.525)
+texture = ExtResource("21_rhdb0")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Arbusto10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Arbusto10/AreaAsset"]
+shape = SubResource("RectangleShape2D_arbusto6")
+
+[node name="Lago3" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(7851, 509)
+scale = Vector2(1.097561, 2.392857)
+texture = ExtResource("16_ic2y5")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Lago3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Lago3/AreaAsset"]
+position = Vector2(0, -2.4583435)
+scale = Vector2(1, 1.0000001)
+shape = SubResource("RectangleShape2D_lago3")
+
+[node name="Comedouro" type="Sprite2D" parent="Assets Zebra"]
+position = Vector2(9493.5, 704.5)
+scale = Vector2(1.640625, 1.328125)
+texture = ExtResource("19_b2csh")
+
+[node name="AreaAsset" type="Area2D" parent="Assets Zebra/Comedouro"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Assets Zebra/Comedouro/AreaAsset"]
+shape = SubResource("RectangleShape2D_comedouro")
+
+[node name="Decoracoes" type="Node2D" parent="."]
+
+[node name="Nuvem1" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(468, 78)
+scale = Vector2(0.8215686, 0.41520467)
+texture = ExtResource("18_t7rqy")
+
+[node name="Nuvem2" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(1290, 82.25)
+scale = Vector2(0.5176469, 0.30847955)
+texture = ExtResource("18_t7rqy")
+
+[node name="Nuvem3" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(2221, 73)
+scale = Vector2(1.5, 0.73846155)
+texture = ExtResource("19_30n5v")
+
+[node name="Nuvem4" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(2813, 88.25)
+scale = Vector2(1.9090909, 1.0894737)
+texture = ExtResource("20_m8p7e")
+
+[node name="Nuvem6" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(3413, 79.00001)
+scale = Vector2(1.9090909, 1.6666666)
+texture = ExtResource("21_lkmxg")
+
+[node name="Nuvem5" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(4102.5, 95.25)
+scale = Vector2(0.8960781, 0.40789473)
+texture = ExtResource("18_t7rqy")
+
+[node name="Nuvem7" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(5202, 86)
+scale = Vector2(0.72504437, 0.44005856)
+texture = ExtResource("18_t7rqy")
+
+[node name="Nuvem8" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(6384, 86.00001)
+scale = Vector2(1.9052234, 1.0769231)
+texture = ExtResource("19_30n5v")
+
+[node name="Nuvem9" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(7195, 107.99999)
+scale = Vector2(2.0647378, 1.3078947)
+texture = ExtResource("20_m8p7e")
+
+[node name="Nuvem10" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(8075.2275, 48.833336)
+scale = Vector2(2.1783764, 1.5388889)
+texture = ExtResource("21_lkmxg")
+
+[node name="Nuvem11" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(8827, 87.00001)
+scale = Vector2(4.886667, 2.988372)
+texture = ExtResource("22_x3gno")
+
+[node name="Moveis8" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(8151.9995, 847)
+scale = Vector2(2.1666667, 1.4622642)
+texture = ExtResource("23_otxir")
+
+[node name="Lampada5" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(9294, 829)
+scale = Vector2(2.42, 2.6190476)
+texture = ExtResource("4_1iqjq")
+
+[node name="Moveis9" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(6203.75, 847)
+scale = Vector2(2.1666667, 1.4622642)
+texture = ExtResource("23_otxir")
+
+[node name="Lampada6" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(7345.7505, 829)
+scale = Vector2(2.42, 2.6190476)
+texture = ExtResource("4_1iqjq")
+
+[node name="Moveis10" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(4206.75, 847)
+scale = Vector2(2.1666667, 1.4622642)
+texture = ExtResource("23_otxir")
+
+[node name="Lampada7" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(5348.7505, 829)
+scale = Vector2(2.42, 2.6190476)
+texture = ExtResource("4_1iqjq")
+
+[node name="Moveis11" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(2296.75, 847)
+scale = Vector2(2.1666667, 1.4622642)
+texture = ExtResource("23_otxir")
+
+[node name="Lampada8" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(3438.7505, 829)
+scale = Vector2(2.42, 2.6190476)
+texture = ExtResource("4_1iqjq")
+
+[node name="Moveis12" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(336.75, 847)
+scale = Vector2(2.1666667, 1.4622642)
+texture = ExtResource("23_otxir")
+
+[node name="Lampada9" type="Sprite2D" parent="Decoracoes"]
+position = Vector2(1478.7505, 829)
+scale = Vector2(2.42, 2.6190476)
+texture = ExtResource("4_1iqjq")
+
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="MoedasHUD" type="HBoxContainer" parent="HUD"]
@@ -255,7 +1318,7 @@ theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("21_font")
 theme_override_font_sizes/font_size = 36
-text = "MOEDAS: 500"
+text = "MOEDAS: 99999"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -277,6 +1340,8 @@ theme_override_colors/font_hover_color = Color(1, 1, 0.9, 1)
 theme_override_fonts/font = ExtResource("21_font")
 theme_override_font_sizes/font_size = 42
 text = "🏪 LOJA"
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("9_i4a30")]
 
 [node name="Barreira Direita" type="StaticBody2D" parent="."]
 position = Vector2(9550, 0)

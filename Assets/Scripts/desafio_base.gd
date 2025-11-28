@@ -40,6 +40,10 @@ func _ready() -> void:
 	_iniciar_desafio()
 
 func _process(delta: float) -> void:
+	# Não processar timer se o jogo estiver pausado
+	if get_tree().paused:
+		return
+	
 	if desafio_ativo and tempo_restante > 0:
 		tempo_restante -= delta
 		_atualizar_tempo()
@@ -165,24 +169,58 @@ func _configurar_ui() -> void:
 	var input_container = HBoxContainer.new()
 	input_container.name = "InputContainer"
 	input_container.alignment = BoxContainer.ALIGNMENT_CENTER
+	input_container.add_theme_constant_override("separation", 10)
 	content_vbox.add_child(input_container)
 	
 	_resposta_input = LineEdit.new()
-	_resposta_input.placeholder_text = "Digite sua resposta..."
-	_resposta_input.custom_minimum_size = Vector2(300, 50)
+	_resposta_input.placeholder_text = "Resposta..."
+	_resposta_input.custom_minimum_size = Vector2(350, 55)
 	_resposta_input.alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_resposta_input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	if font:
 		_resposta_input.add_theme_font_override("font", font)
-	_resposta_input.add_theme_font_size_override("font_size", 24)
+	_resposta_input.add_theme_font_size_override("font_size", 26)
+	
+	# Estilizar o campo de input
+	var input_style = StyleBoxFlat.new()
+	input_style.bg_color = Color(0.1, 0.12, 0.1, 1.0)
+	input_style.border_color = Color(0.3, 0.6, 0.3, 1.0)
+	input_style.set_border_width_all(2)
+	input_style.set_corner_radius_all(8)
+	input_style.set_content_margin_all(10)
+	_resposta_input.add_theme_stylebox_override("normal", input_style)
+	
+	var input_style_focus = input_style.duplicate()
+	input_style_focus.border_color = Color(0.4, 0.9, 0.4, 1.0)
+	_resposta_input.add_theme_stylebox_override("focus", input_style_focus)
+	
+	_resposta_input.add_theme_color_override("font_color", Color.WHITE)
+	_resposta_input.add_theme_color_override("font_placeholder_color", Color(0.6, 0.6, 0.6, 0.8))
+	_resposta_input.add_theme_color_override("caret_color", Color(0.4, 1.0, 0.4, 1.0))
+	
 	_resposta_input.text_submitted.connect(_on_resposta_confirmada)
 	input_container.add_child(_resposta_input)
 	
 	_confirmar_btn = Button.new()
-	_confirmar_btn.text = "✓"
-	_confirmar_btn.custom_minimum_size = Vector2(60, 50)
+	_confirmar_btn.text = "OK"
+	_confirmar_btn.custom_minimum_size = Vector2(80, 55)
 	if font:
 		_confirmar_btn.add_theme_font_override("font", font)
-	_confirmar_btn.add_theme_font_size_override("font_size", 28)
+	_confirmar_btn.add_theme_font_size_override("font_size", 22)
+	
+	# Estilizar botão confirmar
+	var btn_style = StyleBoxFlat.new()
+	btn_style.bg_color = Color(0.2, 0.5, 0.2, 1.0)
+	btn_style.border_color = Color(0.3, 0.7, 0.3, 1.0)
+	btn_style.set_border_width_all(2)
+	btn_style.set_corner_radius_all(8)
+	_confirmar_btn.add_theme_stylebox_override("normal", btn_style)
+	
+	var btn_style_hover = btn_style.duplicate()
+	btn_style_hover.bg_color = Color(0.3, 0.6, 0.3, 1.0)
+	_confirmar_btn.add_theme_stylebox_override("hover", btn_style_hover)
+	
+	_confirmar_btn.add_theme_color_override("font_color", Color.WHITE)
 	_confirmar_btn.pressed.connect(func(): _on_resposta_confirmada(_resposta_input.text))
 	input_container.add_child(_confirmar_btn)
 	

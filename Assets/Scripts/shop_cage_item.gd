@@ -43,7 +43,8 @@ func _update_display() -> void:
 	# Atualizar dificuldade
 	if _difficulty_label:
 		var difficulty = cage_type.difficulty_level if cage_type.difficulty_level > 0 else 1
-		_difficulty_label.text = "DIF. %d" % difficulty
+		var difficulty_text = _get_difficulty_text(difficulty)
+		_difficulty_label.text = difficulty_text
 		_difficulty_label.visible = true  # Garantir que está visível
 		
 		# Mudar cor baseado na dificuldade usando função auxiliar
@@ -98,6 +99,21 @@ func _update_display() -> void:
 		else:
 			_buy_button.disabled = true
 			_buy_button.text = "MOEDAS INSUFICIENTES"
+
+func _get_difficulty_text(difficulty: int) -> String:
+	match difficulty:
+		1:
+			return "INICIANTE"
+		2:
+			return "FÁCIL"
+		3:
+			return "MÉDIO"
+		4:
+			return "DIFÍCIL"
+		5:
+			return "INTELIGENTE"
+		_:
+			return "INICIANTE"  # Default
 
 func _on_buy_pressed() -> void:
 	if cage_type and player:

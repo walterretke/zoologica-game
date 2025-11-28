@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_l5iwh")
-nome_exibicao = "Jaula do Leao"
+nome_exibicao = "Jaula do Leão"
 animal_templates_aceitos = Array[ExtResource("1_pyjvh")]([ExtResource("2_afq3d")])
 difficulty_level = 2
 description = "A jaula do Rei da Floresta!"

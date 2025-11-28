@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://shop_cage_item_001"]
+[gd_scene load_steps=12 format=3 uid="uid://on8pmk53hhx"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/shop_cage_item.gd" id="1_shop_item"]
+[ext_resource type="Script" uid="uid://1g4fqld1qlo5" path="res://Assets/Scripts/shop_cage_item.gd" id="1_shop_item"]
 [ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="2_font"]
-[ext_resource type="Theme" uid="uid://cwjaoo03ur0mh" path="res://Assets/Botoes/default_btn.tres" id="3_theme"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
 bg_color = Color(0.55, 0.45, 0.35, 1)
@@ -11,6 +10,41 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.3, 0.25, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_name"]
+font = ExtResource("2_font")
+font_size = 36
+font_color = Color(1, 0.95, 0.8, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_difficulty_badge"]
+bg_color = Color(0.3, 0.3, 0.4, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.2, 0.2, 0.3, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_difficulty"]
+font = ExtResource("2_font")
+font_size = 24
+font_color = Color(1, 1, 0.8, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_price"]
+font = ExtResource("2_font")
+font_size = 32
+font_color = Color(1, 0.9, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_desc"]
+font = ExtResource("2_font")
+font_size = 22
+font_color = Color(0.95, 0.9, 0.85, 1)
+shadow_color = Color(0, 0, 0, 0.8)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
 bg_color = Color(0.2, 0.7, 0.2, 1)
@@ -36,52 +70,15 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.3, 0.25, 0.2, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_name"]
-font = ExtResource("2_font")
-font_size = 36
-font_color = Color(1, 0.95, 0.8, 1)
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(3, 3)
-
-[sub_resource type="LabelSettings" id="LabelSettings_price"]
-font = ExtResource("2_font")
-font_size = 32
-font_color = Color(1, 0.9, 0, 1)
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="LabelSettings" id="LabelSettings_desc"]
-font = ExtResource("2_font")
-font_size = 22
-font_color = Color(0.95, 0.9, 0.85, 1)
-shadow_color = Color(0, 0, 0, 0.8)
-shadow_offset = Vector2(1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_difficulty_badge"]
-bg_color = Color(0.3, 0.3, 0.4, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.2, 0.2, 0.3, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_difficulty"]
-font = ExtResource("2_font")
-font_size = 24
-font_color = Color(1, 1, 0.8, 1)
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(2, 2)
-
 [node name="ShopCageItem" type="Panel" node_paths=PackedStringArray("_name_label", "_price_label", "_description_label", "_buy_button", "_difficulty_label")]
 custom_minimum_size = Vector2(1500, 200)
-layout_mode = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 script = ExtResource("1_shop_item")
 _name_label = NodePath("HBoxContainer/InfoContainer/NameContainer/NameLabel")
 _price_label = NodePath("HBoxContainer/InfoContainer/PriceLabel")
 _description_label = NodePath("HBoxContainer/InfoContainer/DescriptionLabel")
 _buy_button = NodePath("HBoxContainer/BuyButton")
-_difficulty_label = NodePath("HBoxContainer/InfoContainer/NameContainer/DifficultyBadge/DifficultyLabel")
+_difficulty_label = NodePath("HBoxContainer/InfoContainer/NameContainer/DifficultyBadge/")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -106,9 +103,8 @@ theme_override_constants/separation = 10
 [node name="NameLabel" type="Label" parent="HBoxContainer/InfoContainer/NameContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-label_settings = SubResource("LabelSettings_name")
 text = "Nome da Jaula"
-horizontal_alignment = 0
+label_settings = SubResource("LabelSettings_name")
 vertical_alignment = 1
 
 [node name="DifficultyBadge" type="Panel" parent="HBoxContainer/InfoContainer/NameContainer"]
@@ -116,49 +112,48 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_difficulty_badge")
 
-[node name="DifficultyLabel" type="Label" parent="HBoxContainer/InfoContainer/NameContainer/DifficultyBadge"]
+[node name="" type="Label" parent="HBoxContainer/InfoContainer/NameContainer/DifficultyBadge"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 4.0
-offset_right = -8.0
-offset_bottom = -4.0
+offset_left = -216.0
+offset_top = -4.0
+offset_right = -9.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "DIFICULDADE. 1"
 label_settings = SubResource("LabelSettings_difficulty")
-text = "DIF. 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PriceLabel" type="Label" parent="HBoxContainer/InfoContainer"]
 layout_mode = 2
-label_settings = SubResource("LabelSettings_price")
 text = "1.000 MOEDAS"
-horizontal_alignment = 0
+label_settings = SubResource("LabelSettings_price")
 vertical_alignment = 1
 
 [node name="DescriptionLabel" type="Label" parent="HBoxContainer/InfoContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-label_settings = SubResource("LabelSettings_desc")
 text = "Descrição da jaula aparecerá aqui."
-horizontal_alignment = 0
+label_settings = SubResource("LabelSettings_desc")
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="BuyButton" type="Button" parent="HBoxContainer"]
-layout_mode = 2
 custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
 size_flags_horizontal = 4
-theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
-theme_override_fonts/font = ExtResource("2_font")
-theme_override_font_sizes/font_size = 40
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0.9, 1)
 theme_override_colors/font_disabled_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 text = "COMPRAR"
+DifficultyLabelDifficultyLabel

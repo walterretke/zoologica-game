@@ -28,6 +28,9 @@ func _ready() -> void:
 	# Carregar todos os animais disponíveis
 	_load_available_animals()
 	
+	# Buscar referências de UI se não estiverem definidas
+	_find_ui_references()
+	
 	# Atualizar a interface primeiro
 	_update_ui()
 	
@@ -40,6 +43,41 @@ func _ready() -> void:
 	
 	# Também permitir fechar com ESC
 	set_process_input(true)
+
+func _find_ui_references() -> void:
+	# Buscar label de moedas se não estiver definido
+	if not _moedas_label:
+		_moedas_label = _find_node_by_name(self, "MoedasLabel") as Label
+		if not _moedas_label:
+			_moedas_label = _find_node_by_name(self, "CoinsLabel") as Label
+	
+	# Buscar containers se não estiverem definidos
+	if not _cages_container:
+		_cages_container = _find_node_by_name(self, "CagesContainer") as VBoxContainer
+		if not _cages_container:
+			_cages_container = _find_node_by_name(self, "JaulasContainer") as VBoxContainer
+	
+	if not _animals_container:
+		_animals_container = _find_node_by_name(self, "AnimalsContainer") as VBoxContainer
+		if not _animals_container:
+			_animals_container = _find_node_by_name(self, "AnimaisContainer") as VBoxContainer
+	
+	if not _close_button:
+		_close_button = _find_node_by_name(self, "CloseButton") as Button
+		if not _close_button:
+			_close_button = _find_node_by_name(self, "FecharButton") as Button
+	
+	if not _tab_container:
+		_tab_container = _find_node_by_name(self, "TabContainer") as TabContainer
+
+func _find_node_by_name(parent: Node, node_name: String) -> Node:
+	for child in parent.get_children():
+		if child.name == node_name:
+			return child
+		var result = _find_node_by_name(child, node_name)
+		if result:
+			return result
+	return null
 
 func _connect_close_button() -> void:
 	if _close_button:
@@ -95,7 +133,14 @@ func _load_available_animals() -> void:
 func _update_ui() -> void:
 	# Atualizar moedas com formatação
 	if player and _moedas_label:
-		_moedas_label.text = GameUtils.format_currency(player.total_moedas)
+		var novo_texto = GameUtils.format_currency(player.total_moedas)
+		_moedas_label.text = novo_texto
+		print("Shop: Moedas atualizadas para: %s (valor: %d)" % [novo_texto, player.total_moedas])
+	elif player:
+		# Tentar encontrar o label novamente
+		_moedas_label = _find_node_by_name(self, "MoedasLabel") as Label
+		if _moedas_label:
+			_moedas_label.text = GameUtils.format_currency(player.total_moedas)
 	
 	# Atualizar seção de jaulas
 	_update_cages_section()
@@ -135,6 +180,9 @@ func _update_animals_section() -> void:
 		_animals_container.add_child(empty_label)
 		return
 	
+	# Lista temporária para armazenar animais compatíveis com suas jaulas
+	var animais_compatíveis: Array[Dictionary] = []
+	
 	# Para cada animal disponível, verificar se é compatível com alguma jaula
 	for animal_template in available_animals:
 		# Encontrar todas as jaulas compatíveis com este animal
@@ -143,12 +191,25 @@ func _update_animals_section() -> void:
 			if animal_template in cage.cage_type.animal_templates_aceitos:
 				compatible_cages.append(cage)
 		
-		# Se encontrou jaulas compatíveis, adicionar o animal à loja
+		# Se encontrou jaulas compatíveis, adicionar à lista temporária
 		if not compatible_cages.is_empty():
-			var animal_item = ANIMAL_ITEM_SCENE.instantiate()
-			animal_item.setup(animal_template, player, compatible_cages)
-			animal_item.purchase_requested.connect(_on_animal_purchased)
-			_animals_container.add_child(animal_item)
+			animais_compatíveis.append({
+				"template": animal_template,
+				"cages": compatible_cages,
+				"preco": animal_template.base_price
+			})
+	
+	# Ordenar por preço (do mais barato para o mais caro)
+	animais_compatíveis.sort_custom(func(a, b): 
+		return a.preco < b.preco
+	)
+	
+	# Adicionar os animais ordenados ao container
+	for item in animais_compatíveis:
+		var animal_item = ANIMAL_ITEM_SCENE.instantiate()
+		animal_item.setup(item.template, player, item.cages)
+		animal_item.purchase_requested.connect(_on_animal_purchased)
+		_animals_container.add_child(animal_item)
 
 func _on_cage_purchased(cage_type: CageType) -> void:
 	if not player:
@@ -179,6 +240,13 @@ func _on_cage_purchased(cage_type: CageType) -> void:
 	if player.total_moedas < moedas_antes or cage_type.base_price <= 0:
 		print("Jaula '%s' comprada com sucesso!" % cage_type.nome_exibicao)
 		# TODO: Adicionar feedback visual positivo
+		
+		# Notificar o game.gd para atualizar bloqueios
+		var game_nodes = get_tree().get_nodes_in_group("game")
+		if game_nodes.size() > 0:
+			var game_node = game_nodes[0] as Node2D
+			if game_node and game_node.has_method("_on_jaula_comprada"):
+				game_node._on_jaula_comprada(cage_type)
 	
 	# Atualizar a UI
 	_update_ui()

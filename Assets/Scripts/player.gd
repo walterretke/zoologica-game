@@ -16,7 +16,7 @@ signal jogador_morreu
 
 # --- Variáveis do seu Model Spring ---
 @export var nome: String = "Jogador"
-@export var total_moedas: int = 500
+@export var total_moedas: int = 99999
 
 # Arrays para guardar IDs ou dados
 @export var conquistas_obtidas: Array[String] = []
@@ -37,8 +37,8 @@ var vida_atual: int = 100
 # (Esta parte provavelmente já existe. Você vai ADICIONAR 
 #  @export nelas para poderem ser editadas no Inspetor)
 
-@export var velocidade: float = 800.0   # Velocidade aumentada para movimento mais rápido
-@export var forca_pulo: float = -800.0  # Força do pulo estilo Mario (mais forte e rápido)
+@export var velocidade: float = 1000.0   # Velocidade aumentada para movimento mais rápido
+@export var forca_pulo: float = -600.0  # Força do pulo estilo Mario (mais forte e rápido)
 @export var gravidade: float = 2800.0    # Gravidade alta estilo Mario (pulo rápido e responsivo)
 @export var gravidade_caindo: float = 3500.0  # Gravidade ainda maior quando caindo (estilo Mario)
 # Esta é a lista das "instâncias" de jaulas que o jogador possui.
@@ -61,7 +61,7 @@ func _ready():
 	vida_atual = vida_maxima
 	# Inicializa moedas se ainda não foram definidas
 	if total_moedas == 0:
-		total_moedas = 500
+		total_moedas = 99999
 	moedas_atualizadas.emit(total_moedas)
 	
 	# Adicionar ao grupo "player" para ser encontrado facilmente
@@ -218,15 +218,19 @@ func comprar_jaula(cage_type_blueprint: CageType) -> bool:
 	# 2. Cria a "Instância" da Jaula
 	var nova_jaula = Cage.new(cage_type_blueprint)
 	
-	# 3. Adiciona automaticamente o primeiro animal compatível (toda jaula vem com um animal)
-	if not cage_type_blueprint.animal_templates_aceitos.is_empty():
-		var primeiro_animal_template = cage_type_blueprint.animal_templates_aceitos[0]
-		# Adiciona o animal sem descontar moedas (vem grátis com a jaula)
-		var animal_inicial = Animal.new(primeiro_animal_template)
-		nova_jaula.animals.append(animal_inicial)
-		print("Jaula '%s' comprada com sucesso! Animal '%s' incluído." % [nova_jaula.cage_type.nome_exibicao, animal_inicial.nome])
+	# 3. Adiciona automaticamente o primeiro animal compatível APENAS para a jaula do elefante
+	# As demais jaulas começam vazias e os animais devem ser comprados separadamente
+	if cage_type_blueprint.nome_exibicao == "Jaula do Elefante":
+		if not cage_type_blueprint.animal_templates_aceitos.is_empty():
+			var primeiro_animal_template = cage_type_blueprint.animal_templates_aceitos[0]
+			# Adiciona o animal sem descontar moedas (vem grátis com a jaula)
+			var animal_inicial = Animal.new(primeiro_animal_template)
+			nova_jaula.animals.append(animal_inicial)
+			print("Jaula '%s' comprada com sucesso! Animal '%s' incluído." % [nova_jaula.cage_type.nome_exibicao, animal_inicial.nome])
+		else:
+			print("Jaula '%s' comprada com sucesso!" % nova_jaula.cage_type.nome_exibicao)
 	else:
-		print("Jaula '%s' comprada com sucesso!" % nova_jaula.cage_type.nome_exibicao)
+		print("Jaula '%s' comprada com sucesso! (sem animais - compre animais na loja)" % nova_jaula.cage_type.nome_exibicao)
 	
 	# 4. Adiciona à lista do jogador
 	jaulas_possuidas.append(nova_jaula)
