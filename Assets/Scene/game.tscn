@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cy3v4r672fdt5"]
+[gd_scene load_steps=20 format=3 uid="uid://cy3v4r672fdt5"]
 
 [ext_resource type="Texture2D" uid="uid://bxja5gm1qxh5l" path="res://Assets/Mapa/jaula_layout.png" id="2_q485k"]
 [ext_resource type="PackedScene" uid="uid://uu4owmm80x58" path="res://Assets/Scene/Player.tscn" id="9_i4a30"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://3i73yfxkb2x8" path="res://Assets/Scripts/game.gd" id="20_game"]
 [ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="21_font"]
 [ext_resource type="Theme" uid="uid://cwjaoo03ur0mh" path="res://Assets/Botoes/default_btn.tres" id="22_theme"]
-[ext_resource type="Script" path="res://Assets/Scripts/placa_interacao.gd" id="23_placa"]
+[ext_resource type="Script" uid="uid://d0wb01cumpt5q" path="res://Assets/Scripts/placa_interacao.gd" id="23_placa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i6p2"]
 size = Vector2(10230, 52)
@@ -14,11 +14,35 @@ size = Vector2(10230, 52)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_barreira"]
 size = Vector2(50, 2000)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvub4"]
-size = Vector2(150, 200)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elefante"]
+size = Vector2(1745, 475)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_area_interacao"]
-size = Vector2(200, 250)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_leao"]
+size = Vector2(1745, 475)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_macaco"]
+size = Vector2(1745, 475)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_girafa"]
+size = Vector2(1745, 475)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_zebra"]
+size = Vector2(1750.5, 464.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_placa_elefante"]
+size = Vector2(200, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_placa_leao"]
+size = Vector2(200, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_placa_macaco"]
+size = Vector2(200, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_placa_girafa"]
+size = Vector2(200, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_placa_zebra"]
+size = Vector2(200, 150)
 
 [node name="game" type="Node2D" node_paths=PackedStringArray("_hud", "_shop_button", "_player", "_moedas_label")]
 script = ExtResource("20_game")
@@ -100,54 +124,114 @@ texture = ExtResource("18_fsb1f")
 
 [node name="AreasInteracao" type="Node2D" parent="."]
 
-[node name="AreaInteracaoElefante" type="Area2D" parent="AreasInteracao"]
-position = Vector2(1286, 800)
+[node name="AreaElefante" type="Area2D" parent="AreasInteracao"]
+position = Vector2(967, 533)
 script = ExtResource("23_placa")
-tipo_desafio = "elefante"
 nome_jaula = "Jaula do Elefante - Adição e Subtração"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaInteracaoElefante"]
-shape = SubResource("RectangleShape2D_area_interacao")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaElefante"]
+position = Vector2(34, -23)
+shape = SubResource("RectangleShape2D_elefante")
+debug_color = Color(0, 1, 0, 0.3)
 
-[node name="AreaInteracaoLeao" type="Area2D" parent="AreasInteracao"]
-position = Vector2(3206, 800)
+[node name="AreaLeao" type="Area2D" parent="AreasInteracao"]
+position = Vector2(2887, 533)
 script = ExtResource("23_placa")
 tipo_desafio = "leao"
 nome_jaula = "Jaula do Leão - Multiplicação"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaInteracaoLeao"]
-shape = SubResource("RectangleShape2D_area_interacao")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaLeao"]
+position = Vector2(37, -11)
+shape = SubResource("RectangleShape2D_leao")
+debug_color = Color(1, 0.5, 0, 0.3)
 
-[node name="AreaInteracaoMacaco" type="Area2D" parent="AreasInteracao"]
-position = Vector2(5123, 800)
+[node name="AreaMacaco" type="Area2D" parent="AreasInteracao"]
+position = Vector2(4804, 533)
 script = ExtResource("23_placa")
 tipo_desafio = "macaco"
 nome_jaula = "Jaula do Macaco - Divisão"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaInteracaoMacaco"]
-shape = SubResource("RectangleShape2D_area_interacao")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaMacaco"]
+position = Vector2(31, -6)
+shape = SubResource("RectangleShape2D_macaco")
+debug_color = Color(0.6, 0.3, 0, 0.3)
 
-[node name="AreaInteracaoGirafa" type="Area2D" parent="AreasInteracao"]
-position = Vector2(7043, 800)
+[node name="AreaGirafa" type="Area2D" parent="AreasInteracao"]
+position = Vector2(6724, 533)
 script = ExtResource("23_placa")
 tipo_desafio = "girafa"
 nome_jaula = "Jaula da Girafa - Regra de Três Simples"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaInteracaoGirafa"]
-shape = SubResource("RectangleShape2D_area_interacao")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaGirafa"]
+position = Vector2(31, -14)
+shape = SubResource("RectangleShape2D_girafa")
+debug_color = Color(1, 1, 0, 0.3)
 
-[node name="AreaInteracaoZebra" type="Area2D" parent="AreasInteracao"]
-position = Vector2(8963, 800)
+[node name="AreaZebra" type="Area2D" parent="AreasInteracao"]
+position = Vector2(8644, 533)
 script = ExtResource("23_placa")
 tipo_desafio = "zebra"
 nome_jaula = "Jaula da Zebra - Regra de Três Composta"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaInteracaoZebra"]
-shape = SubResource("RectangleShape2D_area_interacao")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreasInteracao/AreaZebra"]
+position = Vector2(31.75, -14.25)
+shape = SubResource("RectangleShape2D_zebra")
+debug_color = Color(0, 0, 0, 0.3)
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="PlacasInteracao" type="Node2D" parent="."]
+
+[node name="PlacaElefante" type="Area2D" parent="PlacasInteracao"]
+position = Vector2(1286, 850)
+script = ExtResource("23_placa")
+nome_jaula = "Jaula do Elefante - Adição e Subtração"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacasInteracao/PlacaElefante"]
+shape = SubResource("RectangleShape2D_placa_elefante")
+debug_color = Color(0, 1, 0, 0.5)
+
+[node name="PlacaLeao" type="Area2D" parent="PlacasInteracao"]
+position = Vector2(3206, 850)
+script = ExtResource("23_placa")
+tipo_desafio = "leao"
+nome_jaula = "Jaula do Leão - Multiplicação"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacasInteracao/PlacaLeao"]
+shape = SubResource("RectangleShape2D_placa_leao")
+debug_color = Color(1, 0.5, 0, 0.5)
+
+[node name="PlacaMacaco" type="Area2D" parent="PlacasInteracao"]
+position = Vector2(5123, 850)
+script = ExtResource("23_placa")
+tipo_desafio = "macaco"
+nome_jaula = "Jaula do Macaco - Divisão"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacasInteracao/PlacaMacaco"]
+shape = SubResource("RectangleShape2D_placa_macaco")
+debug_color = Color(0.6, 0.3, 0, 0.5)
+
+[node name="PlacaGirafa" type="Area2D" parent="PlacasInteracao"]
+position = Vector2(7043, 850)
+script = ExtResource("23_placa")
+tipo_desafio = "girafa"
+nome_jaula = "Jaula da Girafa - Regra de Três Simples"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacasInteracao/PlacaGirafa"]
+shape = SubResource("RectangleShape2D_placa_girafa")
+debug_color = Color(1, 1, 0, 0.5)
+
+[node name="PlacaZebra" type="Area2D" parent="PlacasInteracao"]
+position = Vector2(8963, 850)
+script = ExtResource("23_placa")
+tipo_desafio = "zebra"
+nome_jaula = "Jaula da Zebra - Regra de Três Composta"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacasInteracao/PlacaZebra"]
+shape = SubResource("RectangleShape2D_placa_zebra")
+debug_color = Color(0.5, 0.5, 0.5, 0.5)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

@@ -23,14 +23,14 @@ var jaulas_visuais: Dictionary = {}  # {Cage: Node2D} - Container para cada jaul
 var animais_sprites: Dictionary = {}  # {Cage: Array[Node2D]} - Sprites dos animais por jaula (AnimatedSprite2D ou Sprite2D)
 var spots_jaulas: Dictionary = {}  # {Cage: Array[Vector2]} - 20 spots aleatórios por jaula
 
-# Mapeamento de posições das jaulas no mapa
-# 5 jaulas lado a lado: Elefante, Leão, Macaco, Zebra, Girafa
+# Mapeamento de posições das jaulas no mapa (mesmas posições do game.tscn)
+# 5 jaulas lado a lado: Elefante, Leão, Macaco, Girafa, Zebra
 var posicoes_jaulas_por_tipo: Dictionary = {
-	"Jaula do Elefante": Vector2(500, 521),
-	"Jaula do Leão": Vector2(1200, 521),
-	"Jaula do Macaco": Vector2(1900, 521),
-	"Jaula da Zebra": Vector2(2600, 521),
-	"Jaula da Girafa": Vector2(3300, 521)
+	"Jaula do Elefante": Vector2(967, 533),
+	"Jaula do Leão": Vector2(2887, 533),
+	"Jaula do Macaco": Vector2(4804, 533),
+	"Jaula da Girafa": Vector2(6724, 533),
+	"Jaula da Zebra": Vector2(8644, 533)
 }
 
 func _ready() -> void:
@@ -278,44 +278,50 @@ func _criar_container_jaula(jaula: Cage, posicao: Vector2) -> void:
 		push_error("ParallaxLayer não encontrado!")
 
 func _gerar_spots_aleatorios(quantidade: int) -> Array[Vector2]:
-	# Área da jaula - aumentada para cobrir toda a área do layout_jaula.png
-	# O layout_jaula.png parece ter aproximadamente 300x250 pixels (ajustado para mais espalhado)
-	var largura_jaula = 350  # Aumentado de 200 para 350
-	var altura_jaula = 280  # Aumentado de 200 para 280
+	# Área da jaula conforme especificado
+	var largura_jaula = 1745.0  # x = 1745
+	var altura_jaula = 475.0    # y = 475
 	
 	var spots: Array[Vector2] = []
-	var min_distancia = 30.0  # Distância mínima entre spots para evitar aglomeração
 	
-	# Tentar gerar spots bem distribuídos
-	var tentativas_maximas = quantidade * 10
-	var tentativas = 0
+	# Grid mais espaçado - máximo 5 colunas e 2 linhas para maior separação
+	var colunas = mini(quantidade, 5)  # Máximo 5 por linha
+	var linhas = ceili(float(quantidade) / float(colunas))
+	if linhas > 2:
+		linhas = 2
+		colunas = ceili(float(quantidade) / 2.0)
 	
-	while spots.size() < quantidade and tentativas < tentativas_maximas:
-		tentativas += 1
-		
-		# Gerar posição aleatória dentro da área da jaula
-		var x = randf_range(-largura_jaula/2, largura_jaula/2)
-		var y = randf_range(-altura_jaula/2, altura_jaula/2)
-		var novo_spot = Vector2(x, y)
-		
-		# Verificar se está longe o suficiente dos outros spots
-		var muito_proximo = false
-		for spot_existente in spots:
-			if novo_spot.distance_to(spot_existente) < min_distancia:
-				muito_proximo = true
+	# Margens maiores para mais espaço nas bordas
+	var margem_x = 150.0
+	var margem_y = 80.0
+	
+	var area_util_x = largura_jaula - (margem_x * 2)
+	var area_util_y = altura_jaula - (margem_y * 2)
+	
+	var espacamento_x = area_util_x / float(colunas)
+	var espacamento_y = area_util_y / float(linhas) if linhas > 1 else area_util_y
+	
+	# Gerar spots em grid uniforme bem espaçado
+	for linha in range(linhas):
+		for coluna in range(colunas):
+			if spots.size() >= quantidade:
 				break
-		
-		# Se não está muito próximo, adicionar
-		if not muito_proximo:
+			
+			# Posição base do grid - bem distribuído
+			var base_x = -largura_jaula/2.0 + margem_x + espacamento_x/2.0 + coluna * espacamento_x
+			var base_y = -altura_jaula/2.0 + margem_y + espacamento_y/2.0 + linha * espacamento_y
+			
+			# Variação aleatória pequena para parecer natural
+			var variacao_x = randf_range(-40.0, 40.0)
+			var variacao_y = randf_range(-30.0, 30.0)
+			
+			var novo_spot = Vector2(base_x + variacao_x, base_y + variacao_y)
 			spots.append(novo_spot)
 	
-	# Se não conseguiu gerar spots suficientes com distância mínima, preencher com spots aleatórios
-	while spots.size() < quantidade:
-		var x = randf_range(-largura_jaula/2, largura_jaula/2)
-		var y = randf_range(-altura_jaula/2, altura_jaula/2)
-		spots.append(Vector2(x, y))
+	# Embaralhar os spots
+	spots.shuffle()
 	
-	print("Gerados %d spots em área de %dx%d" % [spots.size(), largura_jaula, altura_jaula])
+	print("Gerados %d spots em área de %.0fx%.0f (grid %dx%d, espaçamento %.0fx%.0f)" % [spots.size(), largura_jaula, altura_jaula, colunas, linhas, espacamento_x, espacamento_y])
 	return spots
 
 func _atualizar_animais_na_jaula(jaula: Cage) -> void:
@@ -338,21 +344,29 @@ func _atualizar_animais_na_jaula(jaula: Cage) -> void:
 	# Criar sprites para cada animal na jaula
 	print("Criando sprites para %d animais na jaula" % jaula.animals.size())
 	
-	# Obter spots para esta jaula
-	var spots = spots_jaulas.get(jaula, [])
-	if spots.is_empty():
-		# Se não tem spots, gerar agora
-		spots = _gerar_spots_aleatorios(20)
-		spots_jaulas[jaula] = spots
+	# Gerar novos spots para esta jaula (sempre regenerar para distribuir bem)
+	var spots = _gerar_spots_aleatorios(20)
+	spots_jaulas[jaula] = spots
+	
+	# Criar lista de spots disponíveis (cópia para não modificar o original)
+	var spots_disponiveis = spots.duplicate()
+	spots_disponiveis.shuffle()  # Embaralhar para aleatoriedade
 	
 	for i in range(jaula.animals.size()):
 		var animal = jaula.animals[i]
 		var sprite = _criar_sprite_animal(animal)
 		
 		if sprite:
-			# Escolher um spot aleatório para o animal
-			var spot_index = i % spots.size()
-			var posicao_inicial = spots[spot_index]
+			# Pegar um spot único para cada animal
+			var posicao_inicial: Vector2
+			if spots_disponiveis.size() > 0:
+				posicao_inicial = spots_disponiveis.pop_front()
+			else:
+				# Se acabaram os spots, gerar posição aleatória na área da jaula (centralizada)
+				posicao_inicial = Vector2(
+					randf_range(-772.0, 772.0),   # área útil horizontal (com margem)
+					randf_range(-187.0, 187.0)    # área útil vertical (centralizada)
+				)
 			
 			sprite.position = posicao_inicial
 			sprite.z_index = 1  # Garantir z_index
@@ -362,7 +376,7 @@ func _atualizar_animais_na_jaula(jaula: Cage) -> void:
 			_adicionar_movimento_animal(sprite, spots, jaula)
 			
 			animais_sprites[jaula].append(sprite)
-			print("Animal %d criado no spot %d: %s" % [i, spot_index, posicao_inicial])
+			print("Animal %d criado na posição: %s" % [i, posicao_inicial])
 		else:
 			push_warning("Falha ao criar sprite para animal %d" % i)
 
@@ -658,14 +672,14 @@ func _initialize_prompt_interacao() -> void:
 	print("Prompt de interação criado!")
 
 func _criar_areas_interacao() -> void:
-	# Conectar as áreas de interação que já existem na cena
-	# As áreas estão em AreasInteracao (mesmo nível que o player, sem parallax)
+	# Conectar as áreas de interação das PLACAS (para mostrar o prompt "Pressione E")
+	# As áreas estão em PlacasInteracao (áreas menores perto das placas)
 	var areas_paths = [
-		"AreasInteracao/AreaInteracaoElefante",
-		"AreasInteracao/AreaInteracaoLeao",
-		"AreasInteracao/AreaInteracaoMacaco",
-		"AreasInteracao/AreaInteracaoGirafa",
-		"AreasInteracao/AreaInteracaoZebra"
+		"PlacasInteracao/PlacaElefante",
+		"PlacasInteracao/PlacaLeao",
+		"PlacasInteracao/PlacaMacaco",
+		"PlacasInteracao/PlacaGirafa",
+		"PlacasInteracao/PlacaZebra"
 	]
 	
 	print("=== Conectando áreas de interação existentes nas placas ===")
