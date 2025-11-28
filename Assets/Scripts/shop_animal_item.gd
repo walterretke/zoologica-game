@@ -130,4 +130,3 @@ func _on_buy_pressed() -> void:
 # Função para atualizar o item após uma compra ou mudança
 func refresh() -> void:
 	_update_display()
-

@@ -124,4 +124,3 @@ func _on_buy_pressed() -> void:
 			purchase_requested.emit(cage_type)
 		else:
 			print("Moedas insuficientes!")
-
