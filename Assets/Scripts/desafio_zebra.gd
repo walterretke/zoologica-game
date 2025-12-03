@@ -11,7 +11,7 @@ func _ready() -> void:
 	descricao = "Resolva os problemas de Regra de Três Composta!"
 	total_perguntas = 5
 	moedas_por_acerto = 30
-	tempo_por_pergunta = 75.0
+	tempo_por_pergunta = 600.0  # 10 minutos
 	super._ready()
 
 func _obter_conteudo_ajuda(ajuda_label: RichTextLabel) -> void:

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw6mgldta3e6h"]
+[gd_scene load_steps=5 format=3 uid="uid://cw6mgldta3e6h"]
 
-[ext_resource type="Texture2D" uid="uid://mpuoov6u5oed" path="res://Assets/Mapa/TELA INICIAL.png" id="1_bg"]
+[ext_resource type="Texture2D" uid="uid://drya47uwdupmi" path="res://Assets/Mapa/0 .1- Como jogar.png" id="1_bg"]
 [ext_resource type="Script" uid="uid://d3pew582gl0yn" path="res://Assets/Scripts/main_menu.gd" id="2_script"]
-[ext_resource type="Texture2D" uid="uid://c4xqjbhwtype5" path="res://Assets/Sprites/Assests_Jogo/Jogo/0.3 - Placa Info Bichos.png" id="3_dwgjd"]
 [ext_resource type="Theme" uid="uid://cwjaoo03ur0mh" path="res://Assets/Botoes/default_btn.tres" id="3_theme"]
 [ext_resource type="FontFile" uid="uid://5fw8ttqa62cn" path="res://Assets/Fonts/Silkscreen/Silkscreen-Regular.ttf" id="4_font"]
 
@@ -25,15 +24,6 @@ grow_vertical = 2
 texture = ExtResource("1_bg")
 expand_mode = 1
 stretch_mode = 6
-
-[node name="PainelMadeira" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 603.0
-offset_top = 424.0
-offset_right = 2132.0
-offset_bottom = 1641.0
-scale = Vector2(0.44698, 0.5256648)
-texture = ExtResource("3_dwgjd")
 
 [node name="ContainerIniciar" type="CenterContainer" parent="."]
 layout_mode = 1

@@ -16,7 +16,7 @@ signal jogador_morreu
 
 # --- Variáveis do seu Model Spring ---
 @export var nome: String = "Jogador"
-@export var total_moedas: int = 99999
+@export var total_moedas: int = 9999
 
 # Arrays para guardar IDs ou dados
 @export var conquistas_obtidas: Array[String] = []
@@ -62,7 +62,7 @@ func _ready():
 	vida_atual = vida_maxima
 	# Inicializa moedas se ainda não foram definidas
 	if total_moedas == 0:
-		total_moedas = 99999
+		total_moedas = 9999
 	moedas_atualizadas.emit(total_moedas)
 	
 	# Adicionar ao grupo "player" para ser encontrado facilmente

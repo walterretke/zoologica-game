@@ -458,12 +458,20 @@ func _atualizar_progresso() -> void:
 
 func _atualizar_tempo() -> void:
 	var segundos = int(tempo_restante)
-	_tempo_label.text = "⏱ %ds" % segundos
+	# Mostrar em minutos se for maior que 60 segundos
+	if segundos >= 60:
+		var minutos = segundos / 60
+		var segundos_resto = segundos % 60
+		_tempo_label.text = "⏱ %dm %02ds" % [minutos, segundos_resto]
+	else:
+		_tempo_label.text = "⏱ %ds" % segundos
 	
 	if segundos <= 10:
 		_tempo_label.add_theme_color_override("font_color", Color(1.0, 0.3, 0.3, 1.0))
-	else:
+	elif segundos < 60:
 		_tempo_label.add_theme_color_override("font_color", Color(1.0, 0.8, 0.3, 1.0))
+	else:
+		_tempo_label.add_theme_color_override("font_color", Color(0.3, 1.0, 0.3, 1.0))
 
 func _finalizar_desafio() -> void:
 	desafio_ativo = false
