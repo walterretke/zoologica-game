@@ -30,7 +30,7 @@ var story_pages: Array[Dictionary] = [
 	{"text": "Era uma vez um zoológico próspero, cheio de vida e alegria...\n\n", "character": "", "name": ""},
 	{"text": "O dono do parque, seu avô, sempre cuidou com muito carinho de todos os animais.\n\n", "character": IMG_AVO, "name": "Avô"},
 	{"text": "Mas um dia, seu avô adoeceu gravemente...\n\n", "character": IMG_AVO, "name": "Avô"},
-	{"text": "E você, como filho responsável, precisou assumir a responsabilidade.\n\n", "character": IMG_PERSONAGEM, "name": "Você"},
+	{"text": "E você, como neto responsável, precisou assumir a responsabilidade.\n\n", "character": IMG_PERSONAGEM, "name": "Você"},
 	{"text": "Agora é você quem deve cuidar do zoológico, alimentar os animais,\ncomprar novas jaulas e expandir o parque.\n\n", "character": IMG_PERSONAGEM, "name": "Você"},
 	{"text": "Mas cuidado! Para manter os animais felizes, você precisará resolver\ndesafios matemáticos que aparecerão em cada jaula.\n\n", "character": IMG_AMELIA, "name": "Amelia"},
 	{"text": "O futuro do zoológico está em suas mãos!\n\n[center][font_size=32]Boa sorte![/font_size][/center]", "character": IMG_PERSONAGEM, "name": "Você"}
