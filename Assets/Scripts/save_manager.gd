@@ -92,7 +92,7 @@ static func load_game(player: CharacterBody2D) -> bool:
 	
 	# Carregar dados básicos
 	if config.has_section_key("player", "total_moedas"):
-		player.total_moedas = config.get_value("player", "total_moedas", 99999)
+		player.total_moedas = config.get_value("player", "total_moedas", 4500)
 		player.moedas_atualizadas.emit(player.total_moedas)
 	
 	# Carregar posição
