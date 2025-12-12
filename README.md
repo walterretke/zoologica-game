@@ -59,7 +59,8 @@ O jogo possui 5 tipos de jaulas diferentes:
 ## 🚀 Como Executar
 
 1. Abra o projeto no Godot 4.5
-2. Execute a cena principal: es://Assets/Scene/main_menu.tscn
+2. Execute a cena principal: 
+es://Assets/Scene/main_menu.tscn ou rode o executável arquivo final .exe
 3. Divirta-se!
 
 ## 📝 Notas
